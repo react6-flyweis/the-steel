@@ -120,3 +120,28 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Marquee / scrolling partners logos */
+@layer utilities {
+  .marquee__inner {
+    @apply will-change-transform;
+  }
+
+  /* small helper class to attach the keyframe-based animation */
+  .animate-marquee {
+    animation: marquee 24s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee:hover .marquee__inner {
+    animation-play-state: paused;
+  }
+}
