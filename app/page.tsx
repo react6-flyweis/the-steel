@@ -6,6 +6,7 @@ import firstComeFirstServeImage from "@/assets/home/first-come-banner.png";
 import Image from "next/image";
 import Buildings from "@/components/home/Buildings";
 import DesignYourBuilding from "@/components/home/DesignYourBuilding";
+import OurPromise from "@/components/home/OurPromise";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       />
       <Buildings />
       <DesignYourBuilding />
+      <OurPromise />
     </>
   );
 }
