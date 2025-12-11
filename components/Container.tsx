@@ -3,7 +3,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 
-type ContainerProps<E extends keyof JSX.IntrinsicElements = "div"> = {
+type ContainerProps<E extends React.ElementType = "div"> = {
   children?: React.ReactNode;
   className?: string;
   /** When true the container is full-width (no max-width) */
@@ -12,10 +12,14 @@ type ContainerProps<E extends keyof JSX.IntrinsicElements = "div"> = {
   as?: E;
 } & React.ComponentPropsWithoutRef<E>;
 
-export default function Container<
-  E extends keyof JSX.IntrinsicElements = "div"
->({ children, className, fluid = false, as, ...props }: ContainerProps<E>) {
-  const Component = (as || "div") as any;
+export default function Container<E extends React.ElementType = "div">({
+  children,
+  className,
+  fluid = false,
+  as,
+  ...props
+}: ContainerProps<E>) {
+  const Component = (as || "div") as React.ElementType;
   const maxWidthClass = fluid ? "w-full" : "max-w-7xl w-full";
 
   return (
