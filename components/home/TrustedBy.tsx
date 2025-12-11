@@ -17,7 +17,7 @@ const logos = [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12];
 export default function TrustedBy() {
   return (
     <section className="py-12 pb-8">
-      <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-center mb-10">
+      <h2 className="text-3xl font-semibold tracking-tight text-center mb-10">
         <span className="text-primary">Trusted by</span>
         <span className="ml-3 text-foreground font-semibold">
           thousands of homeowners, farmers & businesses.
@@ -28,7 +28,7 @@ export default function TrustedBy() {
           {logos.concat(logos).map((logo, idx) => (
             <div
               key={idx}
-              className="marquee__item flex-none size-17 inline-flex items-center justify-center rounded-lg overflow-hidden"
+              className="marquee__item flex-none size-16 inline-flex items-center justify-center rounded-lg overflow-hidden"
               aria-hidden={idx >= logos.length}
               style={{
                 background: "color-mix(in srgb, var(--card) 92%, transparent)",
