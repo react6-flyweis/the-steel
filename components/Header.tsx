@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import theSteelLogo from "@/assets/the-steel-logo.svg";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import Container from "./Container";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -23,7 +24,7 @@ export default function Header() {
 
   return (
     <header className="bg-secondary text-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 h-20 flex items-center justify-between">
+      <Container className="h-20 flex items-center justify-between">
         {/* Left: Logo */}
         <div className="flex items-center gap-4">
           <Link
@@ -39,43 +40,48 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Center: Nav */}
-        <nav className="hidden md:flex items-center gap-10">
-          {navItems.map((item) => {
-            const active = pathname === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "text-sm font-medium hover:text-primary transition-colors",
-                  active ? "text-primary" : "text-white/90"
-                )}
+        <div className="flex items-center gap-8">
+          {/* Center: Nav */}
+          <nav className="hidden md:flex items-center gap-12">
+            {navItems.map((item) => {
+              const active = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "text-sm font-medium hover:text-primary transition-colors",
+                    active ? "text-primary" : "text-white/90"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Right: CTAs + mobile toggle */}
+          <div className="flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-3">
+              <Button
+                className="text-primary rounded min-w-36"
+                variant="outline"
               >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+                Contact Us
+              </Button>
+              <Button className="rounded min-w-36">Get a Quote</Button>
+            </div>
 
-        {/* Right: CTAs + mobile toggle */}
-        <div className="flex items-center gap-3">
-          <div className="hidden md:flex items-center gap-3">
-            <Button className="text-primary rounded" variant="outline">
-              Contact Us
-            </Button>
-            <Button className="rounded">Get a Quote</Button>
+            <button
+              className="md:hidden p-2 rounded-md text-white/90 hover:text-white focus:outline-none"
+              aria-label="Toggle menu"
+              onClick={() => setOpen((s) => !s)}
+            >
+              {open ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
-
-          <button
-            className="md:hidden p-2 rounded-md text-white/90 hover:text-white focus:outline-none"
-            aria-label="Toggle menu"
-            onClick={() => setOpen((s) => !s)}
-          >
-            {open ? <X size={20} /> : <Menu size={20} />}
-          </button>
         </div>
-      </div>
+      </Container>
 
       {/* Mobile menu */}
       {open && (
