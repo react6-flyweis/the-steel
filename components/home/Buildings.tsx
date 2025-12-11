@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Button } from "../ui/button";
 
 import garageImg from "@/assets/buildings/garage.png";
@@ -10,6 +9,8 @@ import aviationImg from "@/assets/buildings/aviation.png";
 import inventoryImg from "@/assets/buildings/inventory.png";
 import commercialImg from "@/assets/buildings/commercial.png";
 import storageImg from "@/assets/buildings/storage.png";
+import buildingsBg from "@/assets/buildings/buildings-bg.png";
+import Container from "../Container";
 
 const items = [
   {
@@ -56,8 +57,20 @@ const items = [
 
 export default function Buildings() {
   return (
-    <section className="py-16 bg-secondary text-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 text-center">
+    <section className="relative py-16 bg-secondary text-white">
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${buildingsBg.src})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          opacity: 0.04,
+        }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 text-center">
         <h2 className="text-3xl font-extrabold">
           <span className="text-primary">Steel Buildings for</span> Every
           Purpose
@@ -67,31 +80,27 @@ export default function Buildings() {
           quotes.
         </p>
 
-        {/* Fixed-width centered container using flex + wrap. Cards have fixed widths so the
-            last row naturally centers when there's an incomplete line. */}
-        <div className="mt-10">
-          <div className="mx-auto max-w-[1100px] flex flex-wrap justify-center gap-6">
-            {items.map((it) => (
-              <article
-                key={it.title}
-                className="flex items-center gap-4 p-4 rounded-xl bg-card/20 border border-white/5 w-[340px]"
-              >
-                <div className=" flex items-center justify-center shrink-0">
-                  <Image
-                    src={it.img}
-                    alt={it.title}
-                    className="object-contain h-full w-full max-w-24 max-h-24"
-                  />
-                </div>
+        <Container className="mt-10 flex flex-wrap justify-center gap-6">
+          {items.map((it) => (
+            <article
+              key={it.title}
+              className="flex items-center gap-4 p-3 rounded-xl bg-card/10 border border-white/5 w-[370px]"
+            >
+              <div className=" flex items-center justify-center shrink-0">
+                <Image
+                  src={it.img}
+                  alt={it.title}
+                  className="object-contain h-full w-full max-w-24 max-h-24"
+                />
+              </div>
 
-                <div className="text-left">
-                  <div className="font-semibold text-lg">{it.title}</div>
-                  <div className="text-sm text-white/70 mt-1">{it.desc}</div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
+              <div className="text-left">
+                <div className="font-semibold text-lg">{it.title}</div>
+                <div className="text-sm text-white/70 mt-1">{it.desc}</div>
+              </div>
+            </article>
+          ))}
+        </Container>
 
         <div className="mt-10 flex justify-center">
           <Button size="lg" className="min-w-44 rounded">
