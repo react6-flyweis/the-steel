@@ -7,6 +7,9 @@ import Image from "next/image";
 import Buildings from "@/components/home/Buildings";
 import DesignYourBuilding from "@/components/home/DesignYourBuilding";
 import OurPromise from "@/components/home/OurPromise";
+import BuildSteps from "@/components/home/BuildSteps";
+import BuildingInAction from "@/components/home/BuildingInAction";
+import DreamBuilding from "@/components/home/DreamBuilding";
 
 export default function Home() {
   return (
@@ -22,6 +25,9 @@ export default function Home() {
       <Buildings />
       <DesignYourBuilding />
       <OurPromise />
+      <BuildSteps />
+      <BuildingInAction />
+      <DreamBuilding />
     </>
   );
 }
