@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "./Container";
 import theSteelLogo from "@/assets/the-steel-logo-dark.svg";
+import fbLogo from "@/assets/fb.svg";
+import linkedinLogo from "@/assets/linkedin.svg";
+import twitterLogo from "@/assets/twitter.svg";
 
 export default function Footer() {
   return (
@@ -77,14 +80,14 @@ export default function Footer() {
               NEWSLETTER:
             </div>
 
-            <div className="flex gap-3 items-center">
+            <div className="flex flex-col md:flex-row gap-3 items-center">
               <input
                 aria-label="Your email"
                 placeholder="Your email here"
-                className="flex-1 border border-border rounded px-4 py-2 text-sm"
+                className="flex-1 border-0 rounded px-4 py-2 text-sm bg-transparent focus:outline-none focus:ring-0"
                 type="email"
               />
-              <button className="bg-[#616065] text-white px-4 py-2 rounded">
+              <button className="bg-secondary text-white px-4 py-2 rounded">
                 Subscribe
               </button>
             </div>
@@ -94,16 +97,10 @@ export default function Footer() {
             <div className="text-sm font-semibold text-primary mb-3">
               SOCIAL:
             </div>
-            <div className="flex gap-4">
-              <span className="h-10 w-10 rounded-full bg-slate-800 text-white flex items-center justify-center">
-                f
-              </span>
-              <span className="h-10 w-10 rounded-full bg-slate-800 text-white flex items-center justify-center">
-                in
-              </span>
-              <span className="h-10 w-10 rounded-full bg-slate-800 text-white flex items-center justify-center">
-                t
-              </span>
+            <div className="flex gap-4 items-center">
+              <Image src={fbLogo} alt="Facebook" className="h-10 w-10" />
+              <Image src={linkedinLogo} alt="LinkedIn" className="h-10 w-10" />
+              <Image src={twitterLogo} alt="Twitter" className="h-10 w-10" />
             </div>
           </div>
         </div>
