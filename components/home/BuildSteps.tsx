@@ -31,8 +31,8 @@ export default function BuildSteps() {
     <Container className="relative overflow-hidden py-16 bg-[#EDF1F4]" fluid>
       <Container className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Left: Image */}
-        <div className="w-full relative overflow-visible flex items-center justify-start">
-          <div className="absolute -left-80  -top-50">
+        <div className="w-full relative overflow-visible flex items-center justify-start order-last md:order-first">
+          <div className="md:absolute md:-left-80 md:-top-50 mt-6 md:mt-0 mx-auto">
             <Image
               src={houseSteps}
               alt="building steps"
