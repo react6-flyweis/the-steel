@@ -1,30 +1,125 @@
 "use client";
 
-import { Button } from "../ui/button";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
 
 import formCardBg from "@/assets/home/form-card-bg.png";
 import googleBusinessLogo from "@/assets/home/google-business.png";
 import bbbLogo from "@/assets/home/bbb.png";
 import iasLogo from "@/assets/home/ias.png";
-import Image from "next/image";
-import { PhoneIcon } from "lucide-react";
 
-export const buildingTypes = [
-  "Garages",
-  "Workshops",
-  "Barndominiums",
-  "Aviation",
-  "Agricultural",
-  "Warehouses",
-  "Carports",
-  "Arch Buildings",
-  "Sales Storage",
-  "Commercial",
-];
+import {
+  buildingTypeSchema,
+  dimensionsSchema,
+  locationSchema,
+  nameSchema,
+  contactSchema,
+  type BuildingTypeFormData,
+  type DimensionsFormData,
+  type LocationFormData,
+  type NameFormData,
+  type ContactFormData,
+  type FullBuildingFormData,
+} from "@/lib/building-form-schemas";
+
+import { BuildingTypeStep } from "./BuildingTypeStep";
+import { DimensionsStep } from "./DimensionsStep";
+import { LocationStep } from "./LocationStep";
+import { NameStep } from "./NameStep";
+import { ContactStep } from "./ContactStep";
+import { ConfirmationStep } from "./ConfirmationStep";
 
 export const phone = "+0998765432123";
 
 export default function BuildingForm() {
+  const [step, setStep] = useState<number>(1);
+  const [formData, setFormData] = useState<Partial<FullBuildingFormData>>({});
+
+  const totalSteps = 6;
+  const progressPercentage = `${(step / totalSteps) * 100}%`;
+
+  // Step 1: Building Type Form
+  const buildingTypeForm = useForm<BuildingTypeFormData>({
+    resolver: zodResolver(buildingTypeSchema),
+    defaultValues: {
+      buildingType: formData.buildingType || "",
+    },
+  });
+
+  // Step 2: Dimensions Form
+  const dimensionsForm = useForm<DimensionsFormData>({
+    resolver: zodResolver(dimensionsSchema),
+    defaultValues: {
+      width: formData.width || "",
+      length: formData.length || "",
+      height: formData.height || "",
+      roofPitch: formData.roofPitch || "",
+    },
+  });
+
+  // Step 3: Location Form
+  const locationForm = useForm<LocationFormData>({
+    resolver: zodResolver(locationSchema),
+    defaultValues: {
+      postalCode: formData.postalCode || "",
+    },
+  });
+
+  // Step 4: Name Form
+  const nameForm = useForm<NameFormData>({
+    resolver: zodResolver(nameSchema),
+    defaultValues: {
+      firstName: formData.firstName || "",
+      lastName: formData.lastName || "",
+    },
+  });
+
+  // Step 5: Contact Form
+  const contactForm = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      email: formData.email || "",
+      phoneNumber: formData.phoneNumber || "",
+    },
+  });
+
+  // Step navigation handlers
+  const handleBuildingTypeNext = (data: BuildingTypeFormData) => {
+    setFormData((prev) => ({ ...prev, ...data }));
+    setStep(2);
+  };
+
+  const handleDimensionsNext = (data: DimensionsFormData) => {
+    setFormData((prev) => ({ ...prev, ...data }));
+    setStep(3);
+  };
+
+  const handleLocationNext = (data: LocationFormData) => {
+    setFormData((prev) => ({ ...prev, ...data }));
+    setStep(4);
+  };
+
+  const handleNameNext = (data: NameFormData) => {
+    setFormData((prev) => ({ ...prev, ...data }));
+    setStep(5);
+  };
+
+  const handleContactSubmit = (data: ContactFormData) => {
+    const finalData = { ...formData, ...data };
+    setFormData(finalData);
+    console.log("Final Form Data:", finalData);
+    // Here you would typically send the data to your backend
+    setStep(6);
+  };
+
+  const goBack = () => {
+    if (step > 1) {
+      setStep(step - 1);
+    }
+  };
+
   return (
     <div className="g-card/5 border border-white/5 rounded-xl overflow-hidden">
       <div className="p-5 relative">
@@ -37,7 +132,8 @@ export default function BuildingForm() {
             className="object-cover object-top opacity-10"
           />
         </div>
-        {/* logos: fixed for all steps  */}
+
+        {/* logos: fixed for all steps */}
         <div className="flex gap-6 mb-5">
           <Image
             src={googleBusinessLogo}
@@ -52,46 +148,57 @@ export default function BuildingForm() {
           <Image src={iasLogo} alt="IAS Logo" className="h-16 object-contain" />
         </div>
 
-        {/* step 1 */}
-        <div className="">
-          {/* heading */}
-          <h3 className="text-lg font-semibold mb-4">
-            What Best Describes Your Building?
-          </h3>
+        {/* Step 1: Building Type */}
+        {step === 1 && (
+          <BuildingTypeStep
+            form={buildingTypeForm}
+            onNext={handleBuildingTypeNext}
+            phone={phone}
+          />
+        )}
 
-          {/* grid of buttons */}
-          <div className="grid grid-cols-2 gap-3">
-            {buildingTypes.map((t) => (
-              <Button
-                key={t}
-                variant="outline"
-                className="justify-start w-full text-sm px-3 py-2"
-              >
-                {t}
-              </Button>
-            ))}
-          </div>
+        {/* Step 2: Dimensions */}
+        {step === 2 && (
+          <DimensionsStep
+            form={dimensionsForm}
+            onNext={handleDimensionsNext}
+            onBack={goBack}
+          />
+        )}
 
-          {/* separator */}
-          <div className="mt-6 text-center text-sm text-muted-foreground">
-            Or
-          </div>
+        {/* Step 3: Location */}
+        {step === 3 && (
+          <LocationStep
+            form={locationForm}
+            onNext={handleLocationNext}
+            onBack={goBack}
+          />
+        )}
 
-          {/* telephone */}
-          <div className="mt-4 flex items-center justify-center">
-            <a
-              href={`tel:${phone}`}
-              className="inline-flex items-center gap-3 bg-black text-white px-4 py-2 rounded-full shadow-md"
-            >
-              <PhoneIcon className="text-primary fill-primary" />
-              {phone}
-            </a>
-          </div>
-        </div>
+        {/* Step 4: Name */}
+        {step === 4 && (
+          <NameStep form={nameForm} onNext={handleNameNext} onBack={goBack} />
+        )}
+
+        {/* Step 5: Contact */}
+        {step === 5 && (
+          <ContactStep
+            form={contactForm}
+            onSubmit={handleContactSubmit}
+            onBack={goBack}
+          />
+        )}
+
+        {/* Step 6: Confirmation */}
+        {step === 6 && <ConfirmationStep />}
       </div>
-      {/*  form progress bar: fixed for all steps */}
+
+      {/* Form progress bar: fixed for all steps */}
       <div className="bg-gray-100 h-3 w-full">
-        <div className="bg-linear-to-r from-[#003880] to-primary h-full w-1/4 transition-all duration-500 rounded-r-full"></div>
+        <div
+          className="bg-linear-to-r from-[#003880] to-primary h-full transition-all duration-500 rounded-r-full"
+          style={{ width: progressPercentage }}
+        ></div>
       </div>
     </div>
   );
