@@ -54,7 +54,7 @@ export default function Testimonials() {
       </Container>
 
       <Container
-        className="py-6 -ml-6 md:ml-0 mt-10"
+        className="py-6  mt-10"
         style={{ WebkitOverflowScrolling: "touch" }}
       >
         {/* On small screens: horizontal scroll (snap). On lg+: show 4 cards at once using basis classes. */}
@@ -63,7 +63,7 @@ export default function Testimonials() {
             {testimonials.map((t) => (
               <CarouselItem
                 key={t.id}
-                className="pl-6 md:basis-1/2 lg:basis-[28%] "
+                className=" md:basis-1/2 lg:basis-[28%] "
               >
                 <article className="bg-linear-to-b from-secondary to-white/5 rounded-lg shadow-lg overflow-hidden relative h-full flex gap-1">
                   <div className="">
