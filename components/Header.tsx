@@ -85,7 +85,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#273444]/95 border-t border-white/5">
+        <div className="md:hidden bg-secondary border-t border-white/5">
           <div className="max-w-7xl mx-auto px-6 md:px-8 py-4 flex flex-col gap-3">
             {navItems.map((item) => (
               <Link
@@ -102,12 +102,13 @@ export default function Header() {
             ))}
 
             <div className="pt-2 flex gap-2">
-              <Button variant="outline" className="flex-1">
+              <Button
+                variant="outline"
+                className="flex-1 text-primary border-primary rounded"
+              >
                 Contact Us
               </Button>
-              <Button className="flex-1" asChild>
-                Get a Quote
-              </Button>
+              <Button className="flex-1 rounded">Get a Quote</Button>
             </div>
           </div>
         </div>
