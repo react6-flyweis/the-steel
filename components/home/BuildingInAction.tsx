@@ -54,7 +54,10 @@ export default function BuildingInAction() {
           <Carousel opts={{ align: "start", containScroll: "trimSnaps" }}>
             <CarouselContent className="items-start">
               {items.map((it, idx) => (
-                <CarouselItem key={idx} className="w-[360px] basis-[30%]">
+                <CarouselItem
+                  key={idx}
+                  className="w-[360px] sm:basis-1/2 md:basis-[30%]"
+                >
                   <article className="rounded-2xl bg-gray-50 border border-gray-100 shadow-sm overflow-hidden">
                     <div className="p-4">
                       <div className="rounded-xl overflow-hidden bg-white">
