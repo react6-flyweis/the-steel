@@ -7,10 +7,15 @@ import Container from "../Container";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden h-[calc(100vh-80px)] flex flex-col">
-      {/* Cloud background (put behind everything) */}
-      <div className="absolute inset-x-0 -top-8 pointer-events-none -z-10">
-        <Image src={cloud} alt="clouds" className="w-full h-auto opacity-30" />
+    <section className="relative overflow-hidden md:min-h-[calc(100vh-80px)] flex flex-col">
+      {/* Cloud background (full-height behind everything) */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <Image
+          src={cloud}
+          alt="clouds"
+          fill
+          className="w-full h-full object-cover opacity-30"
+        />
       </div>
 
       <Container className="pt-10 text-center relative z-10">
@@ -26,7 +31,7 @@ export default function HeroSection() {
           seismic safety.
         </p>
 
-        <div className="mt-6 flex items-center justify-center gap-4">
+        <div className="mt-6 flex items-center justify-center gap-4 pb-5">
           <Button
             className="rounded border-primary text-primary min-w-32"
             size="lg"
@@ -42,8 +47,8 @@ export default function HeroSection() {
         </div>
       </Container>
 
-      {/* House image overlapping lower section */}
-      <div className="absolute bottom-22 w-full flex justify-center pointer-events-none z-10">
+      {/* House image overlapping lower section — flow on mobile, absolute on md+ */}
+      <div className="relative md:absolute md:bottom-22 w-full flex justify-center pointer-events-none z-10 mt-6 md:mt-0">
         <div
           className="relative w-[85%] sm:w-[70%] md:w-[60%] lg:w-[45%] z-10"
           style={{ transform: "scaleX(-1)" }}
@@ -51,7 +56,7 @@ export default function HeroSection() {
           <Image
             src={heroHouse}
             alt="steel building"
-            className="w-full h-auto"
+            className="w-full h-full object-cover"
           />
         </div>
       </div>
