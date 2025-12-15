@@ -9,6 +9,7 @@ import theSteelLogo from "@/assets/the-steel-logo.svg";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import Container from "./Container";
+import GetAQuoteDialog from "./GetAQuoteDialog";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -69,7 +70,9 @@ export default function Header() {
               >
                 Contact Us
               </Button>
-              <Button className="rounded min-w-36">Get a Quote</Button>
+              <GetAQuoteDialog>
+                <Button className="rounded min-w-36">Get a Quote</Button>
+              </GetAQuoteDialog>
             </div>
 
             <button
@@ -108,7 +111,9 @@ export default function Header() {
               >
                 Contact Us
               </Button>
-              <Button className="flex-1 rounded">Get a Quote</Button>
+              <GetAQuoteDialog>
+                <Button className="flex-1 rounded">Get a Quote</Button>
+              </GetAQuoteDialog>
             </div>
           </div>
         </div>
