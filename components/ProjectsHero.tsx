@@ -14,7 +14,7 @@ export default function ProjectsHero() {
 
       <div className="absolute bottom-0 w-full bg-linear-to-b h-full from-transparent via-black/50 to-black/90" />
 
-      <div className="relative z-10 flex items-end justify-center h-full px-6 pb-12">
+      <div className="relative z-10 flex items-center md:items-end justify-center h-full px-6 pb-12">
         <div className="text-center">
           <h1 className=" text-3xl  font-bold leading-tight text-white">
             Our Steel Buildings in Action

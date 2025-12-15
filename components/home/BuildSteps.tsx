@@ -54,9 +54,9 @@ export default function BuildSteps() {
             {steps.map((s) => (
               <div
                 key={s.id}
-                className="flex items-center gap-5 bg-muted/80 dark:bg-muted/60 p-3 rounded-full shadow-sm"
+                className="flex items-center gap-5 bg-linear-to-r from-gray-200 to-transparent dark:bg-muted/60 p-3 rounded-full"
               >
-                <div className="flex items-center justify-center size-10 md:size-12 rounded-full bg-gray-300 dark:bg-gray-600 text-gray-900 dark:text-gray-100 font-semibold">
+                <div className="flex items-center justify-center size-11 md:size-16 rounded-full bg-[#6D6D6D66]  text-xl dark:bg-gray-600 text-gray-900 dark:text-gray-100 font-semibold">
                   {s.id}
                 </div>
 
@@ -64,7 +64,7 @@ export default function BuildSteps() {
                   <h3 className="text-lg md:text-xl font-semibold text-primary">
                     {s.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground mt-1">{s.desc}</p>
+                  <p className="text-sm  mt-2">{s.desc}</p>
                 </div>
               </div>
             ))}

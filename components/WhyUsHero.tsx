@@ -14,7 +14,7 @@ export default function WhyUsHero() {
 
       <div className="absolute bottom-0 w-full bg-linear-to-b h-1/2 from-transparent via-black/30 to-black/80" />
 
-      <div className="relative z-10 flex items-end justify-center h-full px-6 pb-12">
+      <div className="relative z-10 flex items-center  md:items-end justify-center h-full px-6 pb-12">
         <div className="text-center">
           <h1 className=" text-3xl  font-bold leading-tight text-white">
             {" "}
