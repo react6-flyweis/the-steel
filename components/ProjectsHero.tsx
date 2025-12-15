@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import projectsHeroImg from "@/assets/projects-hero.png";
+import GetAQuoteDialog from "./GetAQuoteDialog";
+import Link from "next/link";
 
 export default function ProjectsHero() {
   return (
@@ -25,11 +27,17 @@ export default function ProjectsHero() {
           </p>
 
           <div className="mt-3 flex items-center justify-center gap-4">
-            <Button className=" bg-white border-primary text-primary hover:bg-gray-100 rounded min-w-40">
-              Get a Quote
-            </Button>
+            <GetAQuoteDialog>
+              <Button className=" bg-white border-primary text-primary hover:bg-gray-100 rounded min-w-40">
+                Get a Quote
+              </Button>
+            </GetAQuoteDialog>
 
-            <Button className="rounded min-w-40">See Our Building types</Button>
+            <Link href="/building-types">
+              <Button className="rounded min-w-40">
+                See Our Building types
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

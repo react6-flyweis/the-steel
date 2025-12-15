@@ -16,6 +16,8 @@ import texasImg from "@/assets/buildings/building-texas.png";
 import ontarioImg from "@/assets/buildings/building-ontario.png";
 import melbourneImg from "@/assets/buildings/building-melbourne.png";
 import lasImg from "@/assets/buildings/building-las.png";
+import { ArrowRightIcon } from "lucide-react";
+import { Button } from "../ui/button";
 
 const items = [
   {
@@ -86,11 +88,11 @@ export default function BuildingInAction() {
         </div>
 
         <div className="mt-8">
-          <Link
-            href="#"
-            className="text-blue-600 underline decoration-blue-200 font-medium"
-          >
-            View All Projects →
+          <Link href="/projects">
+            <Button variant="link" className="px-0!">
+              View All Projects
+              <ArrowRightIcon />
+            </Button>
           </Link>
         </div>
       </Container>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import NotSureImage from "@/assets/not-sure.png";
 import Container from "./Container";
 import { Button } from "./ui/button";
+import GetAQuoteDialog from "./GetAQuoteDialog";
 
 export default function NotSure() {
   return (
@@ -24,13 +25,15 @@ export default function NotSure() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button
-                variant="outline"
-                size="lg"
-                className="rounded border-primary text-primary"
-              >
-                Get a Free Quote
-              </Button>
+              <GetAQuoteDialog>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="rounded border-primary text-primary"
+                >
+                  Get a Free Quote
+                </Button>
+              </GetAQuoteDialog>
 
               <Button size="lg" className="rounded">
                 Talk to an Expert

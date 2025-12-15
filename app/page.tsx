@@ -14,6 +14,7 @@ import BuildingInAction from "@/components/home/BuildingInAction";
 import DreamBuilding from "@/components/home/DreamBuilding";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import GetAQuoteDialog from "@/components/GetAQuoteDialog";
 
 export default function Home() {
   return (
@@ -22,11 +23,13 @@ export default function Home() {
       <HeroSection />
       <TrustedBy />
       <Testimonials />
-      <Image
-        src={firstComeFirstServeImage}
-        alt="First Come First Serve Banner"
-        className="w-full "
-      />
+      <GetAQuoteDialog>
+        <Image
+          src={firstComeFirstServeImage}
+          alt="First Come First Serve Banner"
+          className="w-full "
+        />
+      </GetAQuoteDialog>
       <Buildings />
       <DesignYourBuilding />
       <OurPromise />

@@ -1,5 +1,7 @@
 import whyUsHero from "@/assets/why-us-hero.webp";
 import { Button } from "@/components/ui/button";
+import GetAQuoteDialog from "./GetAQuoteDialog";
+import Link from "next/link";
 
 export default function WhyUsHero() {
   return (
@@ -32,11 +34,15 @@ export default function WhyUsHero() {
           </p>
 
           <div className="mt-3 flex items-center justify-center gap-4">
-            <Button className=" bg-white border-primary text-primary hover:bg-gray-100 rounded w-40">
-              Get a Quote
-            </Button>
+            <GetAQuoteDialog>
+              <Button className=" bg-white border-primary text-primary hover:bg-gray-100 rounded w-40">
+                Get a Quote
+              </Button>
+            </GetAQuoteDialog>
 
-            <Button className="rounded w-40">See Our Projects</Button>
+            <Link href="/projects">
+              <Button className="rounded w-40">See Our Projects</Button>
+            </Link>
           </div>
         </div>
       </div>
