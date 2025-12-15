@@ -28,14 +28,25 @@ export default function Footer() {
               <div className="text-sm font-semibold text-primary mb-1 w-1/3">
                 PHONE:
               </div>
-              <div className="text-base w-2/3">+84 1102 2703</div>
+              <div className="text-base w-2/3">
+                <Link href="tel:+8411022703" className="hover:underline">
+                  +84 1102 2703
+                </Link>
+              </div>
             </div>
 
             <div className="flex gap-5 items-stretch">
               <div className="text-sm font-semibold text-primary mb-1 w-1/3">
                 EMAIL:
               </div>
-              <div className="text-base w-2/3">hello@thesteel.com</div>
+              <div className="text-base w-2/3">
+                <Link
+                  href="mailto:hello@thesteel.com"
+                  className="hover:underline"
+                >
+                  hello@thesteel.com
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -61,16 +72,10 @@ export default function Footer() {
           >
             Projects
           </Link>
-          <Link
-            href="/resources"
-            className="hover:text-primary transition-colors"
-          >
+          <Link href="#" className="hover:text-primary transition-colors">
             Resources
           </Link>
-          <Link
-            href="/contact"
-            className="hover:text-primary transition-colors"
-          >
+          <Link href="#" className="hover:text-primary transition-colors">
             Contact
           </Link>
         </nav>
