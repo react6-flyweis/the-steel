@@ -4,6 +4,7 @@ import cloud from "@/assets/home/cloud.png";
 import { Button } from "../ui/button";
 import { BoxIcon, HandCoinsIcon } from "lucide-react";
 import Container from "../Container";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -32,14 +33,16 @@ export default function HeroSection() {
         </p>
 
         <div className="mt-6 flex items-center justify-center gap-4 pb-5">
-          <Button
-            className="rounded border-primary text-primary min-w-32"
-            size="lg"
-            variant="outline"
-          >
-            <BoxIcon />
-            Design in 3D
-          </Button>
+          <Link href="/templates">
+            <Button
+              className="rounded border-primary text-primary min-w-32"
+              size="lg"
+              variant="outline"
+            >
+              <BoxIcon />
+              Design in 3D
+            </Button>
+          </Link>
           <Button size="lg" className="rounded">
             <HandCoinsIcon />
             Price Your Building

@@ -11,6 +11,7 @@ import commercialImg from "@/assets/buildings/commercial.png";
 import storageImg from "@/assets/buildings/storage.png";
 import buildingsBg from "@/assets/buildings/buildings-bg.png";
 import Container from "../Container";
+import GetAQuoteDialog from "../GetAQuoteDialog";
 
 const items = [
   {
@@ -103,9 +104,11 @@ export default function Buildings() {
         </Container>
 
         <div className="mt-10 flex justify-center">
-          <Button size="lg" className="min-w-44 rounded">
-            Get a Quote
-          </Button>
+          <GetAQuoteDialog>
+            <Button size="lg" className="min-w-44 rounded">
+              Get a Quote
+            </Button>
+          </GetAQuoteDialog>
         </div>
       </div>
     </section>
