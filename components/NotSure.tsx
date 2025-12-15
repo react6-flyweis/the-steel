@@ -7,15 +7,15 @@ import GetAQuoteDialog from "./GetAQuoteDialog";
 export default function NotSure() {
   return (
     <section className="bg-muted">
-      <Container className="py-10">
+      <Container className="py-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
           {/* Left: text + actions */}
           <div className="max-w-2xl">
-            <h3 className="text-3xl md:text-4xl font-semibold text-primary">
+            <h2 className="text-3xl  font-semibold text-primary">
               Not Sure Which
-            </h3>
+            </h2>
 
-            <h2 className="mt-3 text-4xl md:text-5xl font-extrabold leading-tight text-secondary">
+            <h2 className="mt-3 text-3xl font-extrabold leading-tight text-secondary">
               Building Type Fits Your Needs?
             </h2>
 
