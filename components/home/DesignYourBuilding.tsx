@@ -3,6 +3,9 @@ import DesignPreview from "./DesignPreview";
 import BuildingForm from "./BuildingForm";
 import Container from "../Container";
 
+import formCardBg from "@/assets/home/form-card-bg.png";
+import Image from "next/image";
+
 export default function DesignYourBuilding() {
   return (
     <section className="py-16">
@@ -17,12 +20,23 @@ export default function DesignYourBuilding() {
         </p>
       </Container>
 
-      <Container className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      <Container className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left: Designer Preview */}
         <DesignPreview />
 
         {/* Right: Multi-step form placeholder */}
-        <BuildingForm />
+        <div className="bg-card/5 border border-white/5 rounded-xl overflow-hidden relative">
+          {/* background image */}
+          <div className="absolute inset-0 -z-10 overflow-hidden rounded-xl">
+            <Image
+              src={formCardBg}
+              alt=""
+              fill
+              className="object-cover object-top opacity-10"
+            />
+          </div>
+          <BuildingForm />
+        </div>
       </Container>
     </section>
   );
