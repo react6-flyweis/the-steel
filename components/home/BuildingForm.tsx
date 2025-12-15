@@ -200,7 +200,7 @@ export default function BuildingForm({
         {/* Step 6: Confirmation */}
         {step === 6 && <ConfirmationStep />}
 
-        {(step === 1 || isDialog) && step !== 6 && (
+        {(isDialog || step === 1) && (
           <div className="w-full">
             <div className="mt-6 flex items-center w-full">
               <span className="flex-1 h-px bg-gradient-to-r from-black/10 via-black/30 to-black/10" />

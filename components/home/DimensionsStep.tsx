@@ -18,6 +18,8 @@ import { UseFormReturn } from "react-hook-form";
 import { DimensionsFormData } from "@/lib/building-form-schemas";
 import Image from "next/image";
 import buildingDimensionsImg from "@/assets/building-dimensions.webp";
+import dimension2Img from "@/assets/dimensions-2.png";
+import { cn } from "@/lib/utils";
 
 interface DimensionsStepProps {
   form: UseFormReturn<DimensionsFormData>;
@@ -92,9 +94,14 @@ export function DimensionsStep({
             </div>
 
             <div className="flex justify-center">
-              <div className="w-44 h-28 relative">
+              <div
+                className={cn(
+                  "relative",
+                  isDialog ? "max-w-52 max-h-60" : "w-44 h-28"
+                )}
+              >
                 <Image
-                  src={buildingDimensionsImg}
+                  src={isDialog ? dimension2Img : buildingDimensionsImg}
                   alt="Building Dimensions"
                   className="object-contain"
                 />
