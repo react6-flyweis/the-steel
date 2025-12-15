@@ -1,5 +1,6 @@
 import Container from "@/components/Container";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function WhyChooseComparison() {
   return (
@@ -61,7 +62,9 @@ export default function WhyChooseComparison() {
         </div>
 
         <div className="flex justify-center mt-8">
-          <Button className="rounded px-8">See Building Types</Button>
+          <Link href="/building-types">
+            <Button className="rounded px-8">See Building Types</Button>
+          </Link>
         </div>
       </Container>
     </section>
