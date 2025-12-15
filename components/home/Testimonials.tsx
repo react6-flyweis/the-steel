@@ -1,18 +1,22 @@
-import React from "react";
+"use client";
+
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  //   CarouselPrevious,
-  //   CarouselNext,
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import t1 from "@/assets/testimonial/testimonial-1.png";
 import t2 from "@/assets/testimonial/testimonial-2.png";
 import t3 from "@/assets/testimonial/testimonial-3.png";
 import t4 from "@/assets/testimonial/testimonial-4.png";
+import t5 from "@/assets/testimonial/testimonial-5.png";
+import t6 from "@/assets/testimonial/testimonial-6.png";
+
 import Container from "../Container";
 import { QuoteIcon } from "lucide-react";
+import * as React from "react";
+import autoScroll from "embla-carousel-auto-scroll";
 
 const testimonials = [
   {
@@ -39,9 +43,27 @@ const testimonials = [
     text: "We purchased a storage building — best decision. Installation was smooth.",
     author: "John D., Farmer, Kansas",
   },
+  {
+    id: 5,
+    image: t5,
+    text: "The Container Cover quality is outstanding, and I'm thrilled with it.",
+    author: "John D., Farmer, Kansas",
+  },
+  {
+    id: 6,
+    image: t6,
+    text: "The Container Cover quality is outstanding, and I’m thrilled with it .",
+  },
 ];
 
 export default function Testimonials() {
+  const plugin = React.useMemo(() => {
+    return autoScroll({
+      speed: 2,
+      stopOnInteraction: true,
+    });
+  }, []);
+
   return (
     <section className="py-16 bg-secondary text-secondary-foreground">
       <Container className="text-center">
@@ -58,7 +80,11 @@ export default function Testimonials() {
         style={{ WebkitOverflowScrolling: "touch" }}
       >
         {/* On small screens: horizontal scroll (snap). On lg+: show 4 cards at once using basis classes. */}
-        <Carousel opts={{ align: "start" }} className="w-full">
+        <Carousel
+          opts={{ align: "start", loop: true }}
+          plugins={[plugin]}
+          className="w-full"
+        >
           <CarouselContent className="-ml-6">
             {testimonials.map((t) => (
               <CarouselItem
