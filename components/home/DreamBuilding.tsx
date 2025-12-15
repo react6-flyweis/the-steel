@@ -1,3 +1,5 @@
+"use client";
+
 import Image, { StaticImageData } from "next/image";
 
 import Container from "../Container";
@@ -34,7 +36,7 @@ export default function DreamBuilding({
 
         <div className="">
           <div className="mx-auto max-w-lg bg-white text-gray-900 rounded-xl shadow-lg p-6 -mt-20">
-            <form className="grid gap-3">
+            <form className="grid gap-3" onSubmit={(e) => e.preventDefault()}>
               <label className="text-sm">
                 <span className="block text-xs text-gray-500">Name</span>
                 <input
