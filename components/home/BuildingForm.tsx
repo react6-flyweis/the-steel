@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 
-import formCardBg from "@/assets/home/form-card-bg.png";
 import googleBusinessLogo from "@/assets/home/google-business.png";
 import bbbLogo from "@/assets/home/bbb.png";
 import iasLogo from "@/assets/home/ias.png";
@@ -30,10 +29,15 @@ import { LocationStep } from "./LocationStep";
 import { NameStep } from "./NameStep";
 import { ContactStep } from "./ContactStep";
 import { ConfirmationStep } from "./ConfirmationStep";
+import { PhoneIcon } from "lucide-react";
 
 export const phone = "+0998765432123";
 
-export default function BuildingForm() {
+export default function BuildingForm({
+  isDialog = false,
+}: {
+  isDialog?: boolean;
+}) {
   const [step, setStep] = useState<number>(1);
   const [formData, setFormData] = useState<Partial<FullBuildingFormData>>({});
 
@@ -121,39 +125,42 @@ export default function BuildingForm() {
   };
 
   return (
-    <div className="g-card/5 border border-white/5 rounded-xl overflow-hidden">
-      <div className="p-5 relative">
-        {/* background image */}
-        <div className="absolute inset-0 -z-10 overflow-hidden rounded-xl">
-          <Image
-            src={formCardBg}
-            alt=""
-            fill
-            className="object-cover object-top opacity-10"
-          />
-        </div>
+    <div className="relative flex flex-col rounded-xl overflow-hidden h-full">
+      <div className="flex-1 p-5 max-w-xl mx-auto flex flex-col items-center justify-center">
+        {/* logos: shown for steps 1-5, hidden on confirmation (step 6) */}
+        {step !== 6 && (
+          <div className="flex gap-6 mb-5 items-center">
+            <div className="flex-1 flex items-center justify-center">
+              <Image
+                src={googleBusinessLogo}
+                alt="Google Business Logo"
+                className="max-h-16 object-contain"
+              />
+            </div>
 
-        {/* logos: fixed for all steps */}
-        <div className="flex gap-6 mb-5">
-          <Image
-            src={googleBusinessLogo}
-            alt="Google Business Logo"
-            className="h-16 object-contain"
-          />
-          <Image
-            src={bbbLogo}
-            alt="Better Business Bureau Logo"
-            className="max-h-16 object-contain"
-          />
-          <Image src={iasLogo} alt="IAS Logo" className="h-16 object-contain" />
-        </div>
+            <div className="flex-1 flex items-center justify-center">
+              <Image
+                src={bbbLogo}
+                alt="Better Business Bureau Logo"
+                className="max-h-16 object-contain"
+              />
+            </div>
+
+            <div className="flex-1 flex items-center justify-center">
+              <Image
+                src={iasLogo}
+                alt="IAS Logo"
+                className="max-h-16 object-contain"
+              />
+            </div>
+          </div>
+        )}
 
         {/* Step 1: Building Type */}
         {step === 1 && (
           <BuildingTypeStep
             form={buildingTypeForm}
             onNext={handleBuildingTypeNext}
-            phone={phone}
           />
         )}
 
@@ -163,6 +170,7 @@ export default function BuildingForm() {
             form={dimensionsForm}
             onNext={handleDimensionsNext}
             onBack={goBack}
+            isDialog={isDialog}
           />
         )}
 
@@ -191,6 +199,26 @@ export default function BuildingForm() {
 
         {/* Step 6: Confirmation */}
         {step === 6 && <ConfirmationStep />}
+
+        {(step === 1 || isDialog) && step !== 6 && (
+          <div className="w-full">
+            <div className="mt-6 flex items-center w-full">
+              <span className="flex-1 h-px bg-gradient-to-r from-black/10 via-black/30 to-black/10" />
+              <span className="px-4 text-sm text-muted-foreground">Or</span>
+              <span className="flex-1 h-px bg-gradient-to-l from-black/10 via-black/30 to-black/10" />
+            </div>
+
+            <div className="mt-4 flex items-center justify-center">
+              <a
+                href={`tel:${phone}`}
+                className="inline-flex items-center gap-3 bg-black text-white px-4 py-2 rounded-full shadow-md"
+              >
+                <PhoneIcon className="fill-primary text-primary" />
+                {phone}
+              </a>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Form progress bar: fixed for all steps */}
