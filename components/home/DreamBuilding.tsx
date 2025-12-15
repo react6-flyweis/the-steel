@@ -22,7 +22,7 @@ export default function DreamBuilding({
         />
       </div>
 
-      <Container fluid className="relative -mt-20 pb-20 px-0!">
+      <Container className="relative -mt-20 pb-20 px-0!">
         <div className="absolute w-full top-0 h-40 -translate-y-12 x-auto  bg-linear-to-t from-secondary to-secondary/80 blur-sm z-0" />
 
         <div className="relative mb-32 mt-5 z-10 text-center">

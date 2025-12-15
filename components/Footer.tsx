@@ -10,31 +10,33 @@ import twitterLogo from "@/assets/twitter.svg";
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-foreground">
-      <Container className="py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-white text-foreground font-sans">
+      <Container className="py-12 flex flex-col md:flex-row justify-between items-center md:items-start  gap-8">
         {/* Left column: contact */}
         <div className="flex flex-col gap-4">
-          <div className="flex gap-1">
-            <div className="text-sm font-semibold text-primary mb-1">
-              ADDRESS:
+          <div className="flex flex-col gap-5">
+            <div className="flex gap-5 items-stretch">
+              <div className="text-sm font-semibold text-primary mb-1 w-1/3">
+                ADDRESS:
+              </div>
+              <div className="text-base w-2/3">
+                6391 Elgin St. Celina, Delaware 10299
+              </div>
             </div>
-            <div className="text-base">
-              6391 Elgin St. Celina, Delaware 10299
-            </div>
-          </div>
 
-          <div className="flex gap-1">
-            <div className="text-sm font-semibold text-primary mb-1">
-              PHONE:
+            <div className="flex gap-5 items-stretch">
+              <div className="text-sm font-semibold text-primary mb-1 w-1/3">
+                PHONE:
+              </div>
+              <div className="text-base w-2/3">+84 1102 2703</div>
             </div>
-            <div className="text-base">+84 1102 2703</div>
-          </div>
 
-          <div className="flex gap-1">
-            <div className="text-sm font-semibold text-primary mb-1">
-              EMAIL:
+            <div className="flex gap-5 items-stretch">
+              <div className="text-sm font-semibold text-primary mb-1 w-1/3">
+                EMAIL:
+              </div>
+              <div className="text-base w-2/3">hello@thesteel.com</div>
             </div>
-            <div className="text-base">hello@thesteel.com</div>
           </div>
 
           <div className="mt-4">
@@ -43,7 +45,7 @@ export default function Footer() {
         </div>
 
         {/* Center column: nav links */}
-        <nav className="flex flex-col justify-center items-start gap-4 text-sm">
+        <nav className="flex flex-col justify-center items-start gap-4 text-sm font-['Roboto'] font-medium">
           <Link
             href="/building-types"
             className="hover:text-primary transition-colors"
@@ -84,10 +86,10 @@ export default function Footer() {
               <input
                 aria-label="Your email"
                 placeholder="Your email here"
-                className="flex-1 border-0 rounded px-4 py-2 text-sm bg-transparent focus:outline-none focus:ring-0"
+                className="flex-1 border rounded px-4 py-2 text-sm bg-transparent"
                 type="email"
               />
-              <button className="bg-secondary text-white px-4 py-2 rounded">
+              <button className="bg-[#6D6D6D] text-white px-4 py-2 rounded">
                 Subscribe
               </button>
             </div>

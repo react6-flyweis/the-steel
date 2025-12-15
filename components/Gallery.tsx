@@ -61,20 +61,25 @@ export default function Gallery() {
             const span = isFirst
               ? pattern[pairIndex][0]
               : pattern[pairIndex][1];
-            let spanClass =
-              span === 1
-                ? "col-span-1"
-                : span === 2
-                ? "col-span-2"
-                : "col-span-3";
 
-            // force last item to use 3-column span (3:1 style)
+            // Always use a single column on mobile, and apply span on sm+.
+            const baseClass = "col-span-1"; // mobile: single image per row
+            let smClass =
+              span === 1
+                ? "sm:col-span-1"
+                : span === 2
+                ? "sm:col-span-2"
+                : "sm:col-span-3";
+
+            // force last item to use 3-column span (3:1 style) on sm+
             if (idx === images.length - 2) {
-              spanClass = "col-span-3";
+              smClass = "sm:col-span-3";
             }
             if (idx === images.length - 1) {
-              spanClass = "col-span-1";
+              smClass = "sm:col-span-1";
             }
+
+            const spanClass = `${baseClass} ${smClass}`;
 
             return (
               <div

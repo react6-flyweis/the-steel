@@ -51,7 +51,7 @@ export default function SteelBuildingTypes() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {BUILDING_TYPES.map((b) => (
           <div
             key={b.title}
@@ -60,11 +60,11 @@ export default function SteelBuildingTypes() {
             <Image
               src={b.src}
               alt={b.title}
-              className="w-full h-64 object-cover"
+              className="w-full h-48 md:h-64 object-cover"
               placeholder="blur"
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
-            <div className="absolute w-full bottom-4 text-white text-2xl font-semibold drop-shadow-md text-center">
+            <div className="absolute w-full bottom-4 text-white text-xl md:text-2xl font-semibold drop-shadow-md text-center">
               {b.title}
             </div>
           </div>
