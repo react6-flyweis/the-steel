@@ -16,7 +16,7 @@ const navItems = [
   { label: "Building Types", href: "/building-types" },
   { label: "Why Us", href: "/why-us" },
   { label: "Projects", href: "/projects" },
-  { label: "About Us", href: "/about" },
+  { label: "About Us", href: "/#about" },
 ];
 
 export default function Header() {
