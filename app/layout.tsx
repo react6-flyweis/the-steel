@@ -13,7 +13,7 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "The Steel",
+  title: "Steel Building Depot",
   description:
     "Engineered Steel Buildings Built for Strength, Style & Longevity.",
 };
