@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { BoxIcon, HandCoinsIcon } from "lucide-react";
 import Container from "../Container";
 import Link from "next/link";
+import GetAQuoteDialog from "../GetAQuoteDialog";
 
 export default function HeroSection() {
   return (
@@ -43,10 +44,12 @@ export default function HeroSection() {
               Design in 3D
             </Button>
           </Link>
-          <Button size="lg" className="rounded">
-            <HandCoinsIcon />
-            Price Your Building
-          </Button>
+          <GetAQuoteDialog>
+            <Button size="lg" className="rounded">
+              <HandCoinsIcon />
+              Price Your Building
+            </Button>
+          </GetAQuoteDialog>
         </div>
       </Container>
 
