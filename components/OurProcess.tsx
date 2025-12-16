@@ -1,0 +1,105 @@
+import ourProcessImage from "@/assets/our-process.png";
+
+export default function OurProcess() {
+  const steps = [
+    {
+      title: "Consultation",
+      desc: "Share your project details and goals.",
+      side: "left",
+    },
+    {
+      title: "Engineering & Design",
+      desc: "Custom plans created by experienced engineers.",
+      side: "right",
+    },
+    {
+      title: "Quote & Approval",
+      desc: "Transparent pricing with no hidden fees.",
+      side: "left",
+    },
+    {
+      title: "Manufacturing & Delivery",
+      desc: "Precision-fabricated components shipped to your site.",
+      side: "right",
+    },
+    {
+      title: "Build & Support",
+      desc: "DIY-friendly or installer-assisted construction with ongoing support.",
+      side: "left",
+    },
+  ];
+
+  return (
+    <section className="relative py-20 bg-gray-100 overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-5"
+        style={{ backgroundImage: `url(${ourProcessImage.src})` }}
+        aria-hidden
+      />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-blue-600">Our Process</h2>
+          <p className="mt-2 text-xl text-gray-800 font-medium">
+            From Idea to Installation—Made Simple
+          </p>
+        </div>
+
+        <div className="relative">
+          {/* SVG Connector Lines */}
+          <svg
+            className="hidden md:block absolute top-0 left-0 w-full pointer-events-none"
+            style={{ height: "100%", zIndex: 1 }}
+          >
+            {steps.map((s, i) => {
+              if (i === steps.length - 1) return null;
+              const isLeft = s.side === "left";
+              const nextIsLeft = steps[i + 1].side === "left";
+              const yStart = i * 130 + 60;
+              const yEnd = (i + 1) * 130 + 60;
+
+              // L-shaped connector: horizontal to center, then vertical, then horizontal to next
+              return (
+                <path
+                  key={i}
+                  d={`M ${
+                    isLeft ? "25%" : "75%"
+                  } ${yStart} L 50% ${yStart} L 50% ${yEnd} L ${
+                    nextIsLeft ? "25%" : "75%"
+                  } ${yEnd}`}
+                  stroke="#9ca3af"
+                  strokeWidth="3"
+                  fill="none"
+                />
+              );
+            })}
+          </svg>
+
+          <div className="relative" style={{ zIndex: 2 }}>
+            {steps.map((s, i) => (
+              <div
+                key={i}
+                className="relative mb-8 last:mb-0"
+                style={{ minHeight: "120px" }}
+              >
+                <div
+                  className={`md:w-[45%] ${
+                    s.side === "left" ? "" : "md:ml-auto"
+                  }`}
+                >
+                  <div className="bg-slate-800 text-white rounded-xl px-8 py-6 shadow-xl">
+                    <h3 className="font-bold text-xl">{s.title}</h3>
+                    <p className="mt-3 text-sm text-gray-200 leading-relaxed">
+                      {s.desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
