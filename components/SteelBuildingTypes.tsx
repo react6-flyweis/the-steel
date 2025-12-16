@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Container from "@/components/Container";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 import garageImg from "@/assets/building-types/garages.webp";
@@ -53,9 +54,10 @@ export default function SteelBuildingTypes() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {BUILDING_TYPES.map((b) => (
-          <div
+          <Link
             key={b.title}
-            className="relative rounded-lg overflow-hidden shadow-lg"
+            href="/designer"
+            className="relative rounded-lg overflow-hidden shadow-lg group transition-transform duration-300 ease-out transform hover:scale-105 hover:shadow-2xl cursor-pointer block"
           >
             <Image
               src={b.src}
@@ -67,7 +69,7 @@ export default function SteelBuildingTypes() {
             <div className="absolute w-full bottom-4 text-white text-xl md:text-2xl font-semibold drop-shadow-md text-center">
               {b.title}
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </Container>
