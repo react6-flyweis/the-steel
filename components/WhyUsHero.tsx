@@ -19,10 +19,10 @@ export default function WhyUsHero() {
           <h1 className=" text-3xl  font-bold leading-tight text-white">
             {" "}
             <span className="text-blue-500">Why Thousands Trust</span>{" "}
-            <span className="text-white">The Steel</span>{" "}
+            <span className="text-white">Steel Building </span>{" "}
           </h1>
           <h1 className=" text-3xl  font-bold leading-tight text-white">
-            Company{" "}
+            Depot{" "}
             <span className="text-blue-500">
               for Their Steel Building Projects
             </span>

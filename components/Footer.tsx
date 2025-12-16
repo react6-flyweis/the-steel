@@ -131,7 +131,7 @@ export default function Footer() {
 
       <div className="bg-primary py-4 md:py-6">
         <Container className="text-center text-white text-sm md:text-base">
-          Thesteel Company © {new Date().getFullYear()}. All Rights Reserved
+          Steel Building Depot © {new Date().getFullYear()}. All Rights Reserved
         </Container>
       </div>
     </footer>
