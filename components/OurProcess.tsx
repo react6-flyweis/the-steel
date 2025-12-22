@@ -29,11 +29,13 @@ export default function OurProcess() {
     },
   ];
 
+  const svgHeight = steps.length * 180 + 120;
+
   return (
     <section className="relative py-20 bg-gray-100 overflow-hidden">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-5"
+        className="absolute inset-0 bg-cover bg-center opacity-30"
         style={{ backgroundImage: `url(${ourProcessImage.src})` }}
         aria-hidden
       />
@@ -51,26 +53,32 @@ export default function OurProcess() {
           <svg
             className="hidden md:block absolute top-0 left-0 w-full pointer-events-none"
             style={{ height: "100%", zIndex: 1 }}
+            viewBox={`0 0 100 ${svgHeight}`}
+            preserveAspectRatio="none"
           >
             {steps.map((s, i) => {
               if (i === steps.length - 1) return null;
               const isLeft = s.side === "left";
               const nextIsLeft = steps[i + 1].side === "left";
-              const yStart = i * 130 + 60;
-              const yEnd = (i + 1) * 130 + 60;
+              const yStart = i * 220 + 60;
+              const yEnd = (i + 1) * 200 + 30; // Changed to center of next box
 
-              // L-shaped connector: horizontal to center, then vertical, then horizontal to next
+              // Start from right edge of left boxes (45) or left edge of right boxes (55)
+              const xStart = isLeft ? 45 : 55;
+              // End at center of next box (25 for left, 75 for right)
+              const xEnd = nextIsLeft ? 25 : 75;
+
+              // Simple L-shape: horizontal then vertical
               return (
                 <path
                   key={i}
-                  d={`M ${
-                    isLeft ? "25%" : "75%"
-                  } ${yStart} L 50% ${yStart} L 50% ${yEnd} L ${
-                    nextIsLeft ? "25%" : "75%"
-                  } ${yEnd}`}
+                  d={`M ${xStart} ${yStart} L ${xEnd} ${yStart} L ${xEnd} ${yEnd}`}
                   stroke="#9ca3af"
-                  strokeWidth="3"
+                  strokeWidth="5"
                   fill="none"
+                  strokeLinecap="square"
+                  strokeLinejoin="miter"
+                  vectorEffect="non-scaling-stroke"
                 />
               );
             })}
