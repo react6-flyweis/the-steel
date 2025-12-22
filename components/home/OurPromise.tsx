@@ -1,49 +1,54 @@
-import Container from "../Container";
+"use client";
 
-const CARDS = [
-  {
-    icon: "🏗️",
-    title: "Engineered Strength",
-    desc: "Designed to meet or exceed local codes.",
-  },
-  {
-    icon: "⚡",
-    title: "Fast & Easy Installation",
-    desc: "Pre-cut, pre-drilled kits delivered to your site.",
-  },
-  {
-    icon: "💰",
-    title: "Transparent Pricing",
-    desc: "No hidden costs, instant quotes.",
-  },
-  {
-    icon: "📞",
-    title: "Expert Support",
-    desc: "From design consultation to aftercare.",
-  },
-  {
-    icon: "🏷️",
-    title: "Quality Product",
-    desc: "Designed to meet or exceed local codes.",
-  },
-  {
-    icon: "📈",
-    title: "Foster Employee Growth",
-    desc: "Pre-cut, pre-drilled kits delivered to your site.",
-  },
-  {
-    icon: "💪",
-    title: "All Materials American Made",
-    desc: "No hidden costs, instant quotes.",
-  },
-  {
-    icon: "🚫",
-    title: "No Fluff",
-    desc: "From design consultation to aftercare.",
-  },
-];
+import Container from "../Container";
+import useWhyUs from "@/lib/hooks/useWhyUs";
+
+// const CARDS = [
+//   {
+//     icon: "🏗️",
+//     title: "Engineered Strength",
+//     desc: "Designed to meet or exceed local codes.",
+//   },
+//   {
+//     icon: "⚡",
+//     title: "Fast & Easy Installation",
+//     desc: "Pre-cut, pre-drilled kits delivered to your site.",
+//   },
+//   {
+//     icon: "💰",
+//     title: "Transparent Pricing",
+//     desc: "No hidden costs, instant quotes.",
+//   },
+//   {
+//     icon: "📞",
+//     title: "Expert Support",
+//     desc: "From design consultation to aftercare.",
+//   },
+//   {
+//     icon: "🏷️",
+//     title: "Quality Product",
+//     desc: "Designed to meet or exceed local codes.",
+//   },
+//   {
+//     icon: "📈",
+//     title: "Foster Employee Growth",
+//     desc: "Pre-cut, pre-drilled kits delivered to your site.",
+//   },
+//   {
+//     icon: "💪",
+//     title: "All Materials American Made",
+//     desc: "No hidden costs, instant quotes.",
+//   },
+//   {
+//     icon: "🚫",
+//     title: "No Fluff",
+//     desc: "From design consultation to aftercare.",
+//   },
+// ];
 
 export default function OurPromise() {
+  const { data: cards = [], isLoading } = useWhyUs();
+
   return (
     <section className="py-14 bg-secondary/95">
       <Container>
@@ -54,18 +59,38 @@ export default function OurPromise() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {CARDS.map((c) => (
-            <div
-              key={c.title}
-              className="bg-white text-gray-900 dark:bg-card dark:text-card-foreground rounded-md p-4 py-8 flex flex-col items-center gap-3 shadow-md"
-            >
-              <div className="text-5xl">{c.icon}</div>
-              <h3 className="font-semibold text-lg text-center">{c.title}</h3>
-              <p className="text-sm text-center text-muted-foreground max-w-48">
-                {c.desc}
-              </p>
-            </div>
-          ))}
+          {isLoading
+            ? Array.from({ length: 4 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="bg-white text-gray-900 dark:bg-card dark:text-card-foreground rounded-md p-4 py-8 flex flex-col items-center gap-3 shadow-md animate-pulse"
+                  aria-hidden
+                >
+                  <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-neutral-700" />
+                  <div className="h-4 bg-gray-200 dark:bg-neutral-700 rounded w-3/4 mt-3" />
+                  <div className="h-3 bg-gray-200 dark:bg-neutral-700 rounded w-5/6 mt-2" />
+                </div>
+              ))
+            : cards.map((c) => (
+                <div
+                  key={c._id}
+                  className="bg-white text-gray-900 dark:bg-card dark:text-card-foreground rounded-md p-4 py-8 flex flex-col items-center gap-3 shadow-md"
+                >
+                  {c.image ? (
+                    // simple image fallback for emoji/png icons
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={c.image} alt={c.title} className="w-12 h-12" />
+                  ) : (
+                    <div className="text-5xl">🏗️</div>
+                  )}
+                  <h3 className="font-semibold text-lg text-center">
+                    {c.title}
+                  </h3>
+                  <p className="text-sm text-center text-muted-foreground max-w-48">
+                    {c.description}
+                  </p>
+                </div>
+              ))}
         </div>
       </Container>
     </section>
