@@ -3,6 +3,7 @@ import NotSureImage from "@/assets/not-sure.png";
 import Container from "./Container";
 import { Button } from "./ui/button";
 import GetAQuoteDialog from "./GetAQuoteDialog";
+import ContactUsDialog from "./ContactUsDialog";
 
 export default function NotSure() {
   return (
@@ -35,9 +36,11 @@ export default function NotSure() {
                 </Button>
               </GetAQuoteDialog>
 
-              <Button size="lg" className="rounded">
-                Talk to an Expert
-              </Button>
+              <ContactUsDialog>
+                <Button size="lg" className="rounded">
+                  Talk to an Expert
+                </Button>
+              </ContactUsDialog>
             </div>
           </div>
 
