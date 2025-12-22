@@ -1,43 +1,47 @@
-import Image from "next/image";
-import g1 from "@/assets/gallery/gallery-1.png";
-import g2 from "@/assets/gallery/gallery-2.png";
-import g3 from "@/assets/gallery/gallery-3.png";
-import g4 from "@/assets/gallery/gallery-4.png";
-import g5 from "@/assets/gallery/gallery-5.png";
-import g6 from "@/assets/gallery/gallery-6.png";
-import g7 from "@/assets/gallery/gallery-7.png";
-import g8 from "@/assets/gallery/gallery-8.png";
-import g9 from "@/assets/gallery/gallery-9.png";
-import g10 from "@/assets/gallery/gallery-10.png";
-import g11 from "@/assets/gallery/gallery-11.png";
-import g12 from "@/assets/gallery/gallery-12.png";
-import g13 from "@/assets/gallery/gallery-13.png";
-import g14 from "@/assets/gallery/gallery-14.png";
-import g15 from "@/assets/gallery/gallery-15.png";
-import g16 from "@/assets/gallery/gallery-16.png";
-import g17 from "@/assets/gallery/gallery-17.png";
-import g18 from "@/assets/gallery/gallery-18.png";
+"use client";
 
-const images = [
-  g1,
-  g2,
-  g3,
-  g4,
-  g5,
-  g6,
-  g7,
-  g8,
-  g9,
-  g10,
-  g11,
-  g12,
-  g13,
-  g14,
-  g15,
-  g16,
-  g17,
-  g18,
-];
+import Image from "next/image";
+
+import useProjects from "@/lib/hooks/useProjects";
+// import g1 from "@/assets/gallery/gallery-1.png";
+// import g2 from "@/assets/gallery/gallery-2.png";
+// import g3 from "@/assets/gallery/gallery-3.png";
+// import g4 from "@/assets/gallery/gallery-4.png";
+// import g5 from "@/assets/gallery/gallery-5.png";
+// import g6 from "@/assets/gallery/gallery-6.png";
+// import g7 from "@/assets/gallery/gallery-7.png";
+// import g8 from "@/assets/gallery/gallery-8.png";
+// import g9 from "@/assets/gallery/gallery-9.png";
+// import g10 from "@/assets/gallery/gallery-10.png";
+// import g11 from "@/assets/gallery/gallery-11.png";
+// import g12 from "@/assets/gallery/gallery-12.png";
+// import g13 from "@/assets/gallery/gallery-13.png";
+// import g14 from "@/assets/gallery/gallery-14.png";
+// import g15 from "@/assets/gallery/gallery-15.png";
+// import g16 from "@/assets/gallery/gallery-16.png";
+// import g17 from "@/assets/gallery/gallery-17.png";
+// import g18 from "@/assets/gallery/gallery-18.png";
+
+// const images = [
+//   g1,
+//   g2,
+//   g3,
+//   g4,
+//   g5,
+//   g6,
+//   g7,
+//   g8,
+//   g9,
+//   g10,
+//   g11,
+//   g12,
+//   g13,
+//   g14,
+//   g15,
+//   g16,
+//   g17,
+//   g18,
+// ];
 
 // repeating pattern: 2:2, 3:1, 2:2, 1:3, ...
 const pattern = [
@@ -48,6 +52,8 @@ const pattern = [
 ];
 
 export default function Gallery() {
+  const { data: projects = [], isLoading } = useProjects();
+
   return (
     <section
       aria-label="Projects gallery"
@@ -55,7 +61,7 @@ export default function Gallery() {
     >
       <div className="mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {images.map((img, idx) => {
+          {projects.map((project, idx) => {
             const pairIndex = Math.floor(idx / 2) % pattern.length;
             const isFirst = idx % 2 === 0;
             const span = isFirst
@@ -64,20 +70,12 @@ export default function Gallery() {
 
             // Always use a single column on mobile, and apply span on sm+.
             const baseClass = "col-span-1"; // mobile: single image per row
-            let smClass =
+            const smClass =
               span === 1
                 ? "sm:col-span-1"
                 : span === 2
                 ? "sm:col-span-2"
                 : "sm:col-span-3";
-
-            // force last item to use 3-column span (3:1 style) on sm+
-            if (idx === images.length - 2) {
-              smClass = "sm:col-span-3";
-            }
-            if (idx === images.length - 1) {
-              smClass = "sm:col-span-1";
-            }
 
             const spanClass = `${baseClass} ${smClass}`;
 
@@ -87,11 +85,10 @@ export default function Gallery() {
                 className={`${spanClass} mb-0 overflow-hidden rounded-lg bg-gray-50`}
               >
                 <div className="w-full h-64 md:h-96  overflow-hidden">
-                  <Image
-                    src={img}
+                  <img
+                    src={project.image}
                     alt={`Project ${idx + 1}`}
                     className="w-full h-full object-cover rounded-lg transition-transform hover:scale-105"
-                    placeholder="blur"
                   />
                 </div>
               </div>
