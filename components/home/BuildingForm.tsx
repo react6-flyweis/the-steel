@@ -30,6 +30,8 @@ import { NameStep } from "./NameStep";
 import { ContactStep } from "./ContactStep";
 import { ConfirmationStep } from "./ConfirmationStep";
 import { PhoneIcon } from "lucide-react";
+import useSendQuote from "@/lib/hooks/useSendQuote";
+import getErrorMessage from "@/lib/getErrorMessage";
 
 export const phone = "+0998765432123";
 
@@ -111,11 +113,53 @@ export default function BuildingForm({
   };
 
   const handleContactSubmit = (data: ContactFormData) => {
-    const finalData = { ...formData, ...data };
+    // Build final payload and send via React Query mutation
+    const finalData = {
+      ...formData,
+      ...data,
+    } as Partial<FullBuildingFormData> & ContactFormData;
     setFormData(finalData);
-    console.log("Final Form Data:", finalData);
-    // Here you would typically send the data to your backend
-    setStep(6);
+    sendQuote(finalData);
+  };
+
+  // mutation state for UI
+  const [submissionStatus, setSubmissionStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [serverMessage, setServerMessage] = useState<string | undefined>(
+    undefined
+  );
+
+  const sendQuoteMutation = useSendQuote();
+  const sendQuote = async (
+    payload: Partial<FullBuildingFormData> & ContactFormData
+  ) => {
+    // map our form keys to the expected API payload keys
+    const apiPayload = {
+      buildingTypeId: (payload.buildingType as string) || "",
+      width: payload.width || "",
+      length: payload.length || "",
+      height: payload.height || "",
+      roofPitch: payload.roofPitch || "",
+      zipCode: (payload.postalCode as string) || "",
+      firstName: payload.firstName || "",
+      lastName: payload.lastName || "",
+      email: payload.email || "",
+      phoneNumber: payload.phoneNumber || "",
+    };
+
+    try {
+      setSubmissionStatus("loading");
+      const res = await sendQuoteMutation.mutateAsync(apiPayload);
+      setServerMessage(res?.message ?? "Request submitted successfully.");
+      setSubmissionStatus("success");
+      setStep(6);
+    } catch (err) {
+      const message = getErrorMessage(err);
+      setServerMessage(message ?? "Failed to send request. Please try again.");
+      setSubmissionStatus("error");
+      setStep(6);
+    }
   };
 
   const goBack = () => {
@@ -197,8 +241,19 @@ export default function BuildingForm({
           />
         )}
 
-        {/* Step 6: Confirmation */}
-        {step === 6 && <ConfirmationStep />}
+        {/* Step 6: Confirmation / submission status */}
+        {step === 6 && (
+          <div className="w-full max-w-xl mx-auto text-center">
+            <ConfirmationStep
+              status={submissionStatus}
+              message={serverMessage}
+              onBack={() => {
+                setSubmissionStatus("idle");
+                setStep(5);
+              }}
+            />
+          </div>
+        )}
 
         {(isDialog || step === 1) && (
           <div className="w-full">
