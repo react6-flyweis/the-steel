@@ -1,14 +1,26 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import Container from "./Container";
+import NewsletterForm from "./NewsletterForm";
 import theSteelLogo from "@/assets/the-steel-logo-dark.svg";
 import fbLogo from "@/assets/fb.svg";
 import linkedinLogo from "@/assets/linkedin.svg";
 import twitterLogo from "@/assets/twitter.svg";
+import { getContactDetails } from "@/lib/getContactDetails";
 
-export default function Footer() {
+export default async function Footer() {
+  const cd = await getContactDetails();
+
+  const address = cd?.address ?? "";
+  const phone = cd?.phone ?? cd?.customerCarePhone ?? "";
+  const email = cd?.email ?? "hello@thesteel.com";
+  const fb = cd?.fb ?? cd?.fb ?? null;
+  const linkedin = cd?.linkedIn ?? null;
+  const twitter = cd?.twitter ?? null;
+  const copyRight =
+    cd?.copyRight ??
+    `Steel Building Depot © ${new Date().getFullYear()}. All Rights Reserved`;
+
   return (
     <footer className="bg-white text-foreground font-sans">
       <Container className="py-8 md:py-12 flex flex-col md:flex-row justify-between items-start gap-8 md:gap-12">
@@ -19,9 +31,7 @@ export default function Footer() {
               <div className="text-sm font-semibold text-primary sm:w-1/3">
                 ADDRESS:
               </div>
-              <div className="text-base sm:w-2/3">
-                6391 Elgin St. Celina, Delaware 10299
-              </div>
+              <div className="text-base sm:w-2/3">{address}</div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 items-start sm:items-stretch">
@@ -29,8 +39,11 @@ export default function Footer() {
                 PHONE:
               </div>
               <div className="text-base sm:w-2/3">
-                <Link href="tel:+8411022703" className="hover:underline">
-                  +84 1102 2703
+                <Link
+                  href={`tel:${phone.replace(/[^+0-9]/g, "")}`}
+                  className="hover:underline"
+                >
+                  {phone}
                 </Link>
               </div>
             </div>
@@ -40,11 +53,8 @@ export default function Footer() {
                 EMAIL:
               </div>
               <div className="text-base sm:w-2/3">
-                <Link
-                  href="mailto:hello@thesteel.com"
-                  className="hover:underline"
-                >
-                  hello@thesteel.com
+                <Link href={`mailto:${email}`} className="hover:underline">
+                  {email}
                 </Link>
               </div>
             </div>
@@ -86,44 +96,60 @@ export default function Footer() {
 
         {/* Right column: newsletter + social */}
         <div className="flex flex-col gap-6 md:gap-8 w-full md:w-auto">
-          <div>
-            <div className="text-sm font-semibold text-primary mb-3">
-              NEWSLETTER:
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
-              <input
-                aria-label="Your email"
-                placeholder="Your email here"
-                className="flex-1 border rounded px-4 py-2 text-sm bg-transparent w-full"
-                type="email"
-              />
-              <button className="bg-[#6D6D6D] text-white px-4 py-2 rounded whitespace-nowrap">
-                Subscribe
-              </button>
-            </div>
-          </div>
+          <NewsletterForm />
 
           <div>
             <div className="text-sm font-semibold text-primary mb-3">
               SOCIAL:
             </div>
             <div className="flex gap-4 items-center">
-              <Image
-                src={fbLogo}
-                alt="Facebook"
-                className="h-8 w-8 md:h-10 md:w-10"
-              />
-              <Image
-                src={linkedinLogo}
-                alt="LinkedIn"
-                className="h-8 w-8 md:h-10 md:w-10"
-              />
-              <Image
-                src={twitterLogo}
-                alt="Twitter"
-                className="h-8 w-8 md:h-10 md:w-10"
-              />
+              {fb ? (
+                <Link href={fb} aria-label="Facebook">
+                  <Image
+                    src={fbLogo}
+                    alt="Facebook"
+                    className="h-8 w-8 md:h-10 md:w-10"
+                  />
+                </Link>
+              ) : (
+                <Image
+                  src={fbLogo}
+                  alt="Facebook"
+                  className="h-8 w-8 md:h-10 md:w-10"
+                />
+              )}
+
+              {linkedin ? (
+                <Link href={linkedin} aria-label="LinkedIn">
+                  <Image
+                    src={linkedinLogo}
+                    alt="LinkedIn"
+                    className="h-8 w-8 md:h-10 md:w-10"
+                  />
+                </Link>
+              ) : (
+                <Image
+                  src={linkedinLogo}
+                  alt="LinkedIn"
+                  className="h-8 w-8 md:h-10 md:w-10"
+                />
+              )}
+
+              {twitter ? (
+                <Link href={twitter} aria-label="Twitter">
+                  <Image
+                    src={twitterLogo}
+                    alt="Twitter"
+                    className="h-8 w-8 md:h-10 md:w-10"
+                  />
+                </Link>
+              ) : (
+                <Image
+                  src={twitterLogo}
+                  alt="Twitter"
+                  className="h-8 w-8 md:h-10 md:w-10"
+                />
+              )}
             </div>
           </div>
         </div>
@@ -131,7 +157,7 @@ export default function Footer() {
 
       <div className="bg-primary py-4 md:py-6">
         <Container className="text-center text-white text-sm md:text-base">
-          Steel Building Depot © {new Date().getFullYear()}. All Rights Reserved
+          {copyRight}
         </Container>
       </div>
     </footer>
