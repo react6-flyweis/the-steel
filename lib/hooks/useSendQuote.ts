@@ -4,15 +4,15 @@ import { useMutation, type UseMutationOptions } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 
 type Payload = {
-  buildingTypeId: string;
-  width: string;
-  length: string;
-  height: string;
-  roofPitch: string;
-  zipCode: string;
+  buildingTypeId?: string;
+  width?: string;
+  length?: string;
+  height?: string;
+  roofPitch?: string;
+  zipCode?: string;
   firstName: string;
   lastName: string;
-  email: string;
+  email?: string;
   phoneNumber: string;
   city?: string;
   state?: string;
