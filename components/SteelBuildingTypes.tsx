@@ -1,8 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Container from "@/components/Container";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-
 import garageImg from "@/assets/building-types/garages.webp";
 import workshopImg from "@/assets/building-types/workshops.webp";
 import bardominiusImg from "@/assets/building-types/bardominiums.webp";
@@ -12,18 +13,33 @@ import inventoryImg from "@/assets/building-types/inventory.webp";
 import commercialImg from "@/assets/building-types/commercials.webp";
 import storageImg from "@/assets/building-types/storage.webp";
 import { BoxIcon, HandCoinsIcon } from "lucide-react";
+import useBuildingTypes from "@/lib/hooks/useBuildingTypes";
 
-const BUILDING_TYPES = [
-  { title: "Garages", src: garageImg },
-  { title: "Workshops / Shops", src: workshopImg },
-  { title: "Barndominiums", src: bardominiusImg },
-  { title: "Agricultural Buildings", src: agricultureImg },
-  { title: "Aviation", src: aviationImg },
-  { title: "Clearance Inventory", src: inventoryImg },
-  { title: "Commercials", src: commercialImg },
-  { title: "Self Storage", src: storageImg },
+// const BUILDING_TYPES = [
+//   { title: "Garages", src: garageImg },
+//   { title: "Workshops / Shops", src: workshopImg },
+//   { title: "Barndominiums", src: bardominiusImg },
+//   { title: "Agricultural Buildings", src: agricultureImg },
+//   { title: "Aviation", src: aviationImg },
+//   { title: "Clearance Inventory", src: inventoryImg },
+//   { title: "Commercials", src: commercialImg },
+//   { title: "Self Storage", src: storageImg },
+// ];
+
+const IMAGES = [
+  garageImg,
+  workshopImg,
+  bardominiusImg,
+  agricultureImg,
+  aviationImg,
+  inventoryImg,
+  commercialImg,
+  storageImg,
 ];
+
 export default function SteelBuildingTypes() {
+  const { data, isLoading, isError } = useBuildingTypes();
+
   return (
     <Container as="section" className="py-16">
       <div className="text-center max-w-3xl mx-auto mb-8">
@@ -51,27 +67,35 @@ export default function SteelBuildingTypes() {
           </Button>
         </div>
       </div>
-
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {BUILDING_TYPES.map((b) => (
-          <Link
-            key={b.title}
-            href="/designer"
-            className="relative rounded-lg overflow-hidden shadow-lg group transition-transform duration-300 ease-out transform hover:scale-105 hover:shadow-2xl cursor-pointer block"
-          >
-            <Image
-              src={b.src}
-              alt={b.title}
-              className="w-full h-48 md:h-64 object-cover"
-              placeholder="blur"
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
-            <div className="absolute w-full bottom-4 text-white text-xl md:text-2xl font-semibold drop-shadow-md text-center">
-              {b.title}
-            </div>
-          </Link>
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="text-center py-8">Loading building types…</div>
+      ) : isError || !data ? (
+        <div className="text-center py-8">Unable to load building types.</div>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {data.map((b, idx) => {
+            const img = IMAGES[idx % IMAGES.length];
+            return (
+              <Link
+                key={b._id}
+                href="/designer"
+                className="relative rounded-lg overflow-hidden shadow-lg group transition-transform duration-300 ease-out transform hover:scale-105 hover:shadow-2xl cursor-pointer block"
+              >
+                <Image
+                  src={img}
+                  alt={b.title}
+                  className="w-full h-48 md:h-64 object-cover"
+                  placeholder="blur"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
+                <div className="absolute w-full bottom-4 text-white text-xl md:text-2xl font-semibold drop-shadow-md text-center">
+                  {b.title}
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </Container>
   );
 }
