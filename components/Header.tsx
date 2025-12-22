@@ -10,6 +10,7 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import Container from "./Container";
 import GetAQuoteDialog from "./GetAQuoteDialog";
+import ContactUsDialog from "./ContactUsDialog";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -64,12 +65,14 @@ export default function Header() {
           {/* Right: CTAs + mobile toggle */}
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-3">
-              <Button
-                className="text-primary rounded min-w-36"
-                variant="outline"
-              >
-                Contact Us
-              </Button>
+              <ContactUsDialog>
+                <Button
+                  className="text-primary rounded min-w-36"
+                  variant="outline"
+                >
+                  Contact Us
+                </Button>
+              </ContactUsDialog>
               <GetAQuoteDialog>
                 <Button className="rounded min-w-36">Get a Quote</Button>
               </GetAQuoteDialog>
@@ -105,12 +108,14 @@ export default function Header() {
             ))}
 
             <div className="pt-2 flex gap-2">
-              <Button
-                variant="outline"
-                className="flex-1 text-primary border-primary rounded"
-              >
-                Contact Us
-              </Button>
+              <ContactUsDialog>
+                <Button
+                  variant="outline"
+                  className="flex-1 text-primary border-primary rounded"
+                >
+                  Contact Us
+                </Button>
+              </ContactUsDialog>
               <GetAQuoteDialog>
                 <Button className="flex-1 rounded">Get a Quote</Button>
               </GetAQuoteDialog>
