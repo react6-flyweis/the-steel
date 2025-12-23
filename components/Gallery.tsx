@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 
 import useProjects from "@/lib/hooks/useProjects";
 // import g1 from "@/assets/gallery/gallery-1.png";
@@ -54,6 +54,8 @@ const pattern = [
 export default function Gallery() {
   const { data: projects = [], isLoading } = useProjects();
 
+  const items = isLoading ? new Array(8).fill(null) : projects;
+
   return (
     <section
       aria-label="Projects gallery"
@@ -61,7 +63,7 @@ export default function Gallery() {
     >
       <div className="mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {projects.map((project, idx) => {
+          {items.map((project, idx) => {
             const pairIndex = Math.floor(idx / 2) % pattern.length;
             const isFirst = idx % 2 === 0;
             const span = isFirst
@@ -85,11 +87,15 @@ export default function Gallery() {
                 className={`${spanClass} mb-0 overflow-hidden rounded-lg bg-gray-50`}
               >
                 <div className="w-full h-64 md:h-96  overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={`Project ${idx + 1}`}
-                    className="w-full h-full object-cover rounded-lg transition-transform hover:scale-105"
-                  />
+                  {isLoading ? (
+                    <div className="w-full h-full bg-gray-200/70 animate-pulse rounded-lg" />
+                  ) : (
+                    <img
+                      src={project.image}
+                      alt={`Project ${idx + 1}`}
+                      className="w-full h-full object-cover rounded-lg transition-transform hover:scale-105"
+                    />
+                  )}
                 </div>
               </div>
             );
