@@ -41,8 +41,10 @@ export default function DesignPreview({}) {
                 key={p.id}
                 onClick={() => setSelectedPanel(p.id)}
                 aria-label={`panel-${p.id}`}
-                className={`size-11 rounded shadow-sm ring-2 ring-transparent focus:outline-none transition-transform hover:scale-105 ${
-                  selectedPanel === p.id ? "border-primary" : ""
+                className={`size-11 rounded shadow-sm focus:outline-none transition-transform hover:scale-105 cursor-pointer ${
+                  selectedPanel === p.id
+                    ? "ring-4 ring-offset-2 ring-primary/50 scale-105"
+                    : "ring-2 ring-transparent"
                 }`}
                 style={{ backgroundColor: p.color }}
               />
@@ -56,8 +58,10 @@ export default function DesignPreview({}) {
                 key={t.id}
                 onClick={() => setSelectedTrim(t.id)}
                 aria-label={`trim-${t.id}`}
-                className={`size-11 rounded border-2 border-transparent focus:outline-none transition-transform hover:scale-105 ${
-                  selectedTrim === t.id ? "border-primary" : ""
+                className={`size-11 rounded focus:outline-none transition-transform hover:scale-105 ${
+                  selectedTrim === t.id
+                    ? "ring-4 ring-offset-2 ring-primary/50 scale-105"
+                    : "ring-2 ring-transparent border-2 border-transparent"
                 }`}
                 style={{ backgroundColor: t.color }}
               />
