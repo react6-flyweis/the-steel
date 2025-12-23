@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import DesignerHeader from "@/components/designer/DesignerHeader";
 import SideMenu from "@/components/designer/SideMenu";
 import ViewTab from "@/components/designer/ViewTab";
@@ -11,23 +11,11 @@ import OpeningsTab from "@/components/designer/OpeningsTab";
 import BaysTab from "@/components/designer/BaysTab";
 import MezzanineTab from "@/components/designer/MezzanineTab";
 import PropsTab from "@/components/designer/PropsTab";
-import { MonitorIcon, X } from "lucide-react";
+import { X } from "lucide-react";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState<string>("view");
-  const [isMobile, setIsMobile] = useState(false);
   const [showAlert, setShowAlert] = useState(true);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   const tabs = [
     "view",
@@ -54,25 +42,6 @@ export default function Page() {
     setActiveTab(tabs[Math.min(tabs.length - 1, currentIndex + 1)]);
   };
 
-  if (isMobile) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-linear-to-br from-gray-50 to-gray-100 p-6">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-xl p-8 text-center">
-          <div className="mb-6 flex justify-center ">
-            <MonitorIcon className="size-16" />
-          </div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">
-            Desktop Required
-          </h1>
-          <p className="text-gray-600 mb-6">
-            The building designer is optimized for desktop screens. Please open
-            this page on a desktop or laptop computer for the best experience.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <>
       {showAlert && (
@@ -90,78 +59,86 @@ export default function Page() {
         </div>
       )}
       <DesignerHeader />
-      <div className="flex h-[calc(100vh-64px)] overflow-hidden">
-        <SideMenu active={activeTab} onChange={setActiveTab} />
-
-        {activeTab === "view" && (
-          <ViewTab
-            onPrev={goPrev}
-            onNext={goNext}
-            prevDisabled={prevDisabled}
-            nextDisabled={nextDisabled}
-          />
-        )}
-        {activeTab === "dimensions" && (
-          <DimensionsTab
-            onPrev={goPrev}
-            onNext={goNext}
-            prevDisabled={prevDisabled}
-            nextDisabled={nextDisabled}
-          />
-        )}
-        {activeTab === "edit" && (
-          <EditTab
-            onPrev={goPrev}
-            onNext={goNext}
-            prevDisabled={prevDisabled}
-            nextDisabled={nextDisabled}
-          />
-        )}
-        {activeTab === "leantos" && (
-          <LeantosTab
-            onPrev={goPrev}
-            onNext={goNext}
-            prevDisabled={prevDisabled}
-            nextDisabled={nextDisabled}
-          />
-        )}
-        {activeTab === "openings" && (
-          <OpeningsTab
-            onPrev={goPrev}
-            onNext={goNext}
-            prevDisabled={prevDisabled}
-            nextDisabled={nextDisabled}
-          />
-        )}
-        {activeTab === "bays" && (
-          <BaysTab
-            onPrev={goPrev}
-            onNext={goNext}
-            prevDisabled={prevDisabled}
-            nextDisabled={nextDisabled}
-          />
-        )}
-        {activeTab === "mezzanine" && (
-          <MezzanineTab
-            onPrev={goPrev}
-            onNext={goNext}
-            prevDisabled={prevDisabled}
-            nextDisabled={nextDisabled}
-          />
-        )}
-        {activeTab === "props" && (
-          <PropsTab
-            onPrev={goPrev}
-            onNext={goNext}
-            prevDisabled={prevDisabled}
-            nextDisabled={nextDisabled}
-          />
-        )}
-        {/* {activeTab !== "view" && activeTab !== "dimensions" && (
-          <div className="flex-1 flex items-center justify-center">
-            Unsupported tab
+      <div className="flex flex-col h-[calc(100vh-64px)] bg-slate-950/5">
+        <div className="flex flex-1 min-h-0 overflow-hidden pb-24 md:pb-0">
+          <div className="hidden md:block md:border-r md:border-slate-200/60 bg-white/70">
+            <SideMenu active={activeTab} onChange={setActiveTab} />
           </div>
-        )} */}
+
+          <div className="flex-1 min-h-0">
+            {activeTab === "view" && (
+              <ViewTab
+                onPrev={goPrev}
+                onNext={goNext}
+                prevDisabled={prevDisabled}
+                nextDisabled={nextDisabled}
+              />
+            )}
+            {activeTab === "dimensions" && (
+              <DimensionsTab
+                onPrev={goPrev}
+                onNext={goNext}
+                prevDisabled={prevDisabled}
+                nextDisabled={nextDisabled}
+              />
+            )}
+            {activeTab === "edit" && (
+              <EditTab
+                onPrev={goPrev}
+                onNext={goNext}
+                prevDisabled={prevDisabled}
+                nextDisabled={nextDisabled}
+              />
+            )}
+            {activeTab === "leantos" && (
+              <LeantosTab
+                onPrev={goPrev}
+                onNext={goNext}
+                prevDisabled={prevDisabled}
+                nextDisabled={nextDisabled}
+              />
+            )}
+            {activeTab === "openings" && (
+              <OpeningsTab
+                onPrev={goPrev}
+                onNext={goNext}
+                prevDisabled={prevDisabled}
+                nextDisabled={nextDisabled}
+              />
+            )}
+            {activeTab === "bays" && (
+              <BaysTab
+                onPrev={goPrev}
+                onNext={goNext}
+                prevDisabled={prevDisabled}
+                nextDisabled={nextDisabled}
+              />
+            )}
+            {activeTab === "mezzanine" && (
+              <MezzanineTab
+                onPrev={goPrev}
+                onNext={goNext}
+                prevDisabled={prevDisabled}
+                nextDisabled={nextDisabled}
+              />
+            )}
+            {activeTab === "props" && (
+              <PropsTab
+                onPrev={goPrev}
+                onNext={goNext}
+                prevDisabled={prevDisabled}
+                nextDisabled={nextDisabled}
+              />
+            )}
+          </div>
+        </div>
+
+        <SideMenu
+          active={activeTab}
+          onChange={setActiveTab}
+          variant="mobile"
+          className="md:hidden px-6 pb-4"
+        />
       </div>
     </>
   );
