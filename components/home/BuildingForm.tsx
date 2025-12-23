@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
@@ -33,8 +33,6 @@ import { PhoneIcon } from "lucide-react";
 import useSendQuote from "@/lib/hooks/useSendQuote";
 import getErrorMessage from "@/lib/getErrorMessage";
 
-export const phone = "+0998765432123";
-
 export default function BuildingForm({
   isDialog = false,
 }: {
@@ -42,6 +40,28 @@ export default function BuildingForm({
 }) {
   const [step, setStep] = useState<number>(1);
   const [formData, setFormData] = useState<Partial<FullBuildingFormData>>({});
+  const [phone, setPhone] = useState<string>("+00000000000");
+
+  useEffect(() => {
+    let mounted = true;
+    const fetchContact = async () => {
+      try {
+        const res = await fetch("/api/contact");
+        if (!res.ok) return;
+        const json = await res.json();
+        const cd = json?.data ?? null;
+        const p =
+          cd?.phone ?? cd?.customerCarePhone ?? cd?.customerCarePhone ?? null;
+        if (p && mounted) setPhone(p);
+      } catch (e) {
+        // ignore and keep fallback
+      }
+    };
+    fetchContact();
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const totalSteps = 6;
   const progressPercentage = `${(step / totalSteps) * 100}%`;
@@ -258,9 +278,9 @@ export default function BuildingForm({
         {(isDialog || step === 1) && (
           <div className="w-full">
             <div className="mt-6 flex items-center w-full">
-              <span className="flex-1 h-px bg-gradient-to-r from-black/10 via-black/30 to-black/10" />
+              <span className="flex-1 h-px bg-linear-to-r from-black/10 via-black/30 to-black/10" />
               <span className="px-4 text-sm text-muted-foreground">Or</span>
-              <span className="flex-1 h-px bg-gradient-to-l from-black/10 via-black/30 to-black/10" />
+              <span className="flex-1 h-px bg-linear-to-l from-black/10 via-black/30 to-black/10" />
             </div>
 
             <div className="mt-4 flex items-center justify-center">
