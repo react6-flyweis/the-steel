@@ -9,14 +9,21 @@ import {
 import { Input } from "@/components/ui/input";
 import { UseFormReturn } from "react-hook-form";
 import { ContactFormData } from "@/lib/building-form-schemas";
+import { Loader2 } from "lucide-react";
 
 interface ContactStepProps {
   form: UseFormReturn<ContactFormData>;
   onSubmit: (data: ContactFormData) => void;
   onBack: () => void;
+  isSubmitting?: boolean;
 }
 
-export function ContactStep({ form, onSubmit, onBack }: ContactStepProps) {
+export function ContactStep({
+  form,
+  onSubmit,
+  onBack,
+  isSubmitting,
+}: ContactStepProps) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -63,8 +70,19 @@ export function ContactStep({ form, onSubmit, onBack }: ContactStepProps) {
         </div>
 
         <div className="mt-6 flex items-center justify-center">
-          <Button type="submit" size="lg" className="px-8 py-3 h-14 w-56">
-            Price my Building
+          <Button
+            type="submit"
+            size="lg"
+            className="px-8 py-3 h-14 w-56"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <span className="inline-flex items-center gap-2">
+                <Loader2 className="h-4 w-4 animate-spin" /> Submitting...
+              </span>
+            ) : (
+              "Price my Building"
+            )}
           </Button>
         </div>
       </form>

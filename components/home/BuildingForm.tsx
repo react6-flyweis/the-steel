@@ -132,14 +132,20 @@ export default function BuildingForm({
     setStep(5);
   };
 
-  const handleContactSubmit = (data: ContactFormData) => {
+  const handleContactSubmit = async (data: ContactFormData) => {
     // Build final payload and send via React Query mutation
     const finalData = {
       ...formData,
       ...data,
     } as Partial<FullBuildingFormData> & ContactFormData;
     setFormData(finalData);
-    sendQuote(finalData);
+    // ensure UI shows submitting state immediately
+    setSubmissionStatus("loading");
+    try {
+      await sendQuote(finalData);
+    } catch (e) {
+      // sendQuote already handles errors and updates state
+    }
   };
 
   // mutation state for UI
@@ -258,6 +264,7 @@ export default function BuildingForm({
             form={contactForm}
             onSubmit={handleContactSubmit}
             onBack={goBack}
+            isSubmitting={submissionStatus === "loading"}
           />
         )}
 
