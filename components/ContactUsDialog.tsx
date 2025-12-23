@@ -119,11 +119,11 @@ export default function ContactUsDialog({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
 
-      <DialogContent className="sm:max-w-4xl p-1 max-h-[90vh] overflow-y-auto shadow-2xl">
+      <DialogContent className="sm:max-w-4xl p-1 min-h-[70vh] max-h-[90vh] overflow-y-auto shadow-2xl">
         <div className="grid grid-cols-1 sm:grid-cols-[420px_1fr]">
           {/* Left panel */}
           <div className="relative bg-slate-800 text-white p-10 rounded-l overflow-hidden">
-            <div className="max-w-[300px] flex flex-col justify-between h-full gap-8">
+            <div className="max-w-[280px] flex flex-col justify-between h-full gap-8">
               <div className="">
                 <DialogTitle className="text-2xl">
                   Contact Information
