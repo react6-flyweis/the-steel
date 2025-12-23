@@ -53,7 +53,7 @@ export default function BuildingInAction() {
     img: p.image || "",
   }));
 
-  if (isLoading || items.length === 0) return null;
+  const showSkeleton = isLoading || items.length === 0;
 
   return (
     <section className="py-20 bg-background">
@@ -67,39 +67,60 @@ export default function BuildingInAction() {
         <div className="mt-10 relative">
           <Carousel opts={{ align: "start", containScroll: "trimSnaps" }}>
             <CarouselContent className="items-start">
-              {items.map((it, idx) => (
-                <CarouselItem
-                  key={idx}
-                  className="w-[360px] sm:basis-1/2 md:basis-[30%]"
-                >
-                  <article className="rounded-2xl bg-gray-50 border border-gray-100 shadow-sm overflow-hidden">
-                    <div className="p-4">
-                      <div className="rounded-xl overflow-hidden bg-white">
-                        {typeof it.img === "string" ? (
-                          <img
-                            src={it.img}
-                            alt={it.title}
-                            className="object-cover w-full h-[200px]"
-                          />
-                        ) : (
-                          <Image
-                            src={it.img}
-                            alt={it.title}
-                            width={520}
-                            height={320}
-                            className="object-cover w-full h-[200px]"
-                          />
-                        )}
-                      </div>
+              {showSkeleton
+                ? // render 4 skeleton items while loading / empty
+                  [0, 1, 2, 3].map((_, idx) => (
+                    <CarouselItem
+                      key={"skel-" + idx}
+                      className="w-[360px] sm:basis-1/2 md:basis-[30%]"
+                    >
+                      <article className="rounded-2xl bg-gray-50 border border-gray-100 shadow-sm overflow-hidden">
+                        <div className="p-4">
+                          <div className="rounded-xl overflow-hidden bg-white">
+                            <div className="animate-pulse bg-gray-200 w-full h-[200px]" />
+                          </div>
 
-                      <div className="text-left mt-4 font-semibold  text-[#6D6D6D]">
-                        <div className="">{it.title}</div>
-                        <div className=" mt-1">{it.location}</div>
-                      </div>
-                    </div>
-                  </article>
-                </CarouselItem>
-              ))}
+                          <div className="text-left mt-4">
+                            <div className="h-4 bg-gray-200 rounded w-3/4 animate-pulse" />
+                            <div className="h-3 bg-gray-200 rounded w-1/2 mt-2 animate-pulse" />
+                          </div>
+                        </div>
+                      </article>
+                    </CarouselItem>
+                  ))
+                : items.map((it, idx) => (
+                    <CarouselItem
+                      key={idx}
+                      className="w-[360px] sm:basis-1/2 md:basis-[30%]"
+                    >
+                      <article className="rounded-2xl bg-gray-50 border border-gray-100 shadow-sm overflow-hidden">
+                        <div className="p-4">
+                          <div className="rounded-xl overflow-hidden bg-white">
+                            {typeof it.img === "string" ? (
+                              <img
+                                src={it.img}
+                                alt={it.title}
+                                className="object-cover w-full h-[200px]"
+                              />
+                            ) : (
+                              <Image
+                                src={it.img}
+                                alt={it.title}
+                                width={520}
+                                height={320}
+                                className="object-cover w-full h-[200px]"
+                              />
+                            )}
+                          </div>
+
+                          <div className="text-left mt-4 font-semibold  text-[#6D6D6D]">
+                            <div className="">{it.title}</div>
+                            <div className=" mt-1">{it.location}</div>
+                          </div>
+                        </div>
+                      </article>
+                    </CarouselItem>
+                  ))}
             </CarouselContent>
 
             {/* <CarouselPrevious />
