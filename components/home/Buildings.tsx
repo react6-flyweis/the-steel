@@ -1,66 +1,76 @@
 "use client";
 
-// import Image from "next/image";
+import Image from "next/image";
 import { Button } from "../ui/button";
 
-// import garageImg from "@/assets/buildings/garage.png";
-// import workshopImg from "@/assets/buildings/workshop.png";
-// import bardominiusImg from "@/assets/buildings/bardominius.png";
-// import agricultureImg from "@/assets/buildings/agriculture.png";
-// import aviationImg from "@/assets/buildings/aviation.png";
-// import inventoryImg from "@/assets/buildings/inventory.png";
-// import commercialImg from "@/assets/buildings/commercial.png";
-// import storageImg from "@/assets/buildings/storage.png";
+import garageImg from "@/assets/buildings/garage.png";
+import workshopImg from "@/assets/buildings/workshop.png";
+import bardominiusImg from "@/assets/buildings/bardominius.png";
+import agricultureImg from "@/assets/buildings/agriculture.png";
+import aviationImg from "@/assets/buildings/aviation.png";
+import inventoryImg from "@/assets/buildings/inventory.png";
+import commercialImg from "@/assets/buildings/commercial.png";
+import storageImg from "@/assets/buildings/storage.png";
 import buildingsBg from "@/assets/buildings/buildings-bg.png";
 import Container from "../Container";
 import GetAQuoteDialog from "../GetAQuoteDialog";
 import useBuildingTypes, { BuildingType } from "@/lib/hooks/useBuildingTypes";
 
-// const items = [
-//   {
-//     title: "Garages",
-//     desc: "Secure & customizable for vehicles, tools, or storage.",
-//     img: garageImg,
-//   },
-//   {
-//     title: "Workshops",
-//     desc: "Clear-span interiors for productivity.",
-//     img: workshopImg,
-//   },
-//   {
-//     title: "Barndominiums",
-//     desc: "Live + work under one roof.",
-//     img: bardominiusImg,
-//   },
-//   {
-//     title: "Agricultural",
-//     desc: "Barns, sheds, feed storage engineered to farm needs.",
-//     img: agricultureImg,
-//   },
-//   {
-//     title: "Aviation",
-//     desc: "Hangars with wide clear spans for aircraft.",
-//     img: aviationImg,
-//   },
-//   {
-//     title: "Clearance Inventory",
-//     desc: "Expandable & cost-efficient spaces.",
-//     img: inventoryImg,
-//   },
-//   {
-//     title: "Commercial",
-//     desc: "Simple, durable protection from sun & rain.",
-//     img: commercialImg,
-//   },
-//   {
-//     title: "Self Storage",
-//     desc: "Quick shelter solutions",
-//     img: storageImg,
-//   },
-// ];
+const items: BuildingType[] = [
+  {
+    _id: "1",
+    title: "Garages",
+    description: "Secure & customizable for vehicles, tools, or storage.",
+    image: garageImg.src,
+  },
+  {
+    _id: "2",
+    title: "Workshops",
+    description: "Clear-span interiors for productivity.",
+    image: workshopImg.src,
+  },
+  {
+    _id: "3",
+    title: "Barndominiums",
+    description: "Live + work under one roof.",
+    image: bardominiusImg.src,
+  },
+  {
+    _id: "4",
+    title: "Agricultural",
+    description: "Barns, sheds, feed storage engineered to farm needs.",
+    image: agricultureImg.src,
+  },
+  {
+    _id: "5",
+    title: "Aviation",
+    description: "Hangars with wide clear spans for aircraft.",
+    image: aviationImg.src,
+  },
+  {
+    _id: "6",
+    title: "Clearance Inventory",
+    description: "Expandable & cost-efficient spaces.",
+    image: inventoryImg.src,
+  },
+  {
+    _id: "7",
+    title: "Commercial",
+    description: "Simple, durable protection from sun & rain.",
+    image: commercialImg.src,
+  },
+  {
+    _id: "8",
+    title: "Self Storage",
+    description: "Quick shelter solutions",
+    image: storageImg.src,
+  },
+];
 
 export default function Buildings() {
-  const { data: items = [], isLoading, isError } = useBuildingTypes();
+  // const { data: items = [], isLoading, isError } = useBuildingTypes();
+
+  const [isLoading, isError] = [false, false]; // --- MOCK ---
 
   return (
     <section className="relative py-16 bg-secondary text-white">

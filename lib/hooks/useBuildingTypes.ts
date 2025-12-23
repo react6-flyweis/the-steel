@@ -8,10 +8,10 @@ export type BuildingType = {
   title: string;
   description: string;
   image: string;
-  status: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
+  status?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  __v?: number;
 };
 
 export function useBuildingTypes() {
