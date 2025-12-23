@@ -59,11 +59,6 @@ import autoScroll from "embla-carousel-auto-scroll";
 export default function Testimonials() {
   const { data: testimonials = [], isLoading, isError } = useTestimonials();
 
-  // only display testimonials marked for website
-  // const visible = React.useMemo(
-  //   () => testimonials.filter((t) => t.isShowOnWebsite === true),
-  //   [testimonials]
-  // );
   const visible = testimonials;
 
   // compute average rating and total count for dynamic header
@@ -108,7 +103,7 @@ export default function Testimonials() {
           <CarouselContent className="-ml-6">
             {isLoading ? (
               // simple loading placeholders
-              Array.from({ length: 3 }).map((_, i) => (
+              Array.from({ length: 4 }).map((_, i) => (
                 <CarouselItem
                   key={`loading-${i}`}
                   className=" md:basis-1/2 lg:basis-[28%] "
