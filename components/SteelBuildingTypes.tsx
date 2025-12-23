@@ -1,17 +1,17 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 import Container from "@/components/Container";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import garageImg from "@/assets/building-types/garages.webp";
-import workshopImg from "@/assets/building-types/workshops.webp";
-import bardominiusImg from "@/assets/building-types/bardominiums.webp";
-import agricultureImg from "@/assets/building-types/agriculture.webp";
-import aviationImg from "@/assets/building-types/aviation.webp";
-import inventoryImg from "@/assets/building-types/inventory.webp";
-import commercialImg from "@/assets/building-types/commercials.webp";
-import storageImg from "@/assets/building-types/storage.webp";
+// import garageImg from "@/assets/building-types/garages.webp";
+// import workshopImg from "@/assets/building-types/workshops.webp";
+// import bardominiusImg from "@/assets/building-types/bardominiums.webp";
+// import agricultureImg from "@/assets/building-types/agriculture.webp";
+// import aviationImg from "@/assets/building-types/aviation.webp";
+// import inventoryImg from "@/assets/building-types/inventory.webp";
+// import commercialImg from "@/assets/building-types/commercials.webp";
+// import storageImg from "@/assets/building-types/storage.webp";
 import { BoxIcon, HandCoinsIcon } from "lucide-react";
 import useBuildingTypes from "@/lib/hooks/useBuildingTypes";
 
@@ -25,17 +25,6 @@ import useBuildingTypes from "@/lib/hooks/useBuildingTypes";
 //   { title: "Commercials", src: commercialImg },
 //   { title: "Self Storage", src: storageImg },
 // ];
-
-const IMAGES = [
-  garageImg,
-  workshopImg,
-  bardominiusImg,
-  agricultureImg,
-  aviationImg,
-  inventoryImg,
-  commercialImg,
-  storageImg,
-];
 
 export default function SteelBuildingTypes() {
   const { data, isLoading, isError } = useBuildingTypes();
@@ -73,19 +62,18 @@ export default function SteelBuildingTypes() {
         <div className="text-center py-8">Unable to load building types.</div>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {data.map((b, idx) => {
-            const img = IMAGES[idx % IMAGES.length];
+          {data.map((b) => {
             return (
               <Link
                 key={b._id}
                 href="/designer"
                 className="relative rounded-lg overflow-hidden shadow-lg group transition-transform duration-300 ease-out transform hover:scale-105 hover:shadow-2xl cursor-pointer block"
               >
-                <Image
-                  src={img}
+                <img
+                  src={b.image}
                   alt={b.title}
                   className="w-full h-48 md:h-64 object-cover"
-                  placeholder="blur"
+                  // placeholder="blur"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
                 <div className="absolute w-full bottom-4 text-white text-xl md:text-2xl font-semibold drop-shadow-md text-center">
