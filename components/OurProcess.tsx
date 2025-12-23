@@ -35,7 +35,7 @@ export default function OurProcess() {
     <section className="relative py-20 bg-gray-100 overflow-hidden">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-30"
+        className="absolute inset-0 bg-cover opacity-"
         style={{ backgroundImage: `url(${ourProcessImage.src})` }}
         aria-hidden
       />
@@ -43,7 +43,7 @@ export default function OurProcess() {
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-blue-600">Our Process</h2>
-          <p className="mt-2 text-xl text-gray-800 font-medium">
+          <p className="mt-3 text-xl text-gray-800 font-semibold">
             From Idea to Installation—Made Simple
           </p>
         </div>
