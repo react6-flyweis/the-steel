@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
-import theSteelLogo from "@/assets/the-steel-logo.svg";
+import theSteelLogo from "@/assets/steel-building-depot-logo-dark.png";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import Container from "./Container";
@@ -31,13 +31,13 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <Link
             href="/"
-            aria-label="The Steel Home"
+            aria-label="Steel Building Depot Home"
             className="flex items-center gap-3"
           >
             <Image
-              className="max-h-10"
+              className="max-h-11 w-auto"
               src={theSteelLogo}
-              alt="The Steel Logo"
+              alt="Steel Building Depot Logo"
             />
           </Link>
         </div>

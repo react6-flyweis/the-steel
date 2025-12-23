@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "./Container";
 import NewsletterForm from "./NewsletterForm";
-import theSteelLogo from "@/assets/the-steel-logo-dark.svg";
+import theSteelLogo from "@/assets/steel-building-depot-logo-dark.png";
 import fbLogo from "@/assets/fb.svg";
 import linkedinLogo from "@/assets/linkedin.svg";
 import twitterLogo from "@/assets/twitter.svg";
@@ -25,7 +25,7 @@ export default async function Footer() {
     <footer className="bg-white text-foreground font-sans">
       <Container className="py-8 md:py-12 flex flex-col md:flex-row justify-between items-start gap-8 md:gap-12">
         {/* Left column: contact */}
-        <div className="flex flex-col items-start gap-4 w-full md:w-auto">
+        <div className="flex flex-col items-start gap-4 w-full md:w-auto max-w-sm">
           <div className="flex flex-col gap-5 w-full">
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 items-start sm:items-stretch">
               <div className="text-sm font-semibold text-primary sm:w-1/3">
@@ -63,8 +63,8 @@ export default async function Footer() {
           <div className="mt-4">
             <Image
               src={theSteelLogo}
-              alt="The Steel"
-              className="h-12 md:h-16 w-auto"
+              alt="Steel Building Depot"
+              className="h-12 md:h-16 w-auto invert"
             />
           </div>
         </div>
