@@ -123,7 +123,7 @@ export default function ContactUsDialog({
         <div className="grid grid-cols-1 sm:grid-cols-[420px_1fr]">
           {/* Left panel */}
           <div className="relative bg-slate-800 text-white p-10 rounded-l overflow-hidden">
-            <div className="max-w-[300px] flex flex-col justify-between h-full">
+            <div className="max-w-[300px] flex flex-col justify-between h-full gap-8">
               <div className="">
                 <DialogTitle className="text-2xl">
                   Contact Information
