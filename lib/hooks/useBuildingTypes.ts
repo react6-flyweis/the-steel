@@ -7,6 +7,7 @@ export type BuildingType = {
   _id: string;
   title: string;
   description: string;
+  image: string;
   status: string;
   createdAt: string;
   updatedAt: string;
