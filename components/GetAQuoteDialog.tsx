@@ -8,7 +8,7 @@ export default function GetAQuoteDialog({ children }: PropsWithChildren) {
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-3xl p-0 rounded-xl border-0 h-[90vh] overflow-hidden">
+      <DialogContent className="sm:max-w-4xl p-0 rounded-xl border-0 h-[90vh] overflow-hidden">
         <div className="relative">
           <Image
             src={tinShed}
