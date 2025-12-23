@@ -18,7 +18,7 @@ export default function ViewTab({
 }: TabNavProps) {
   return (
     <div className="flex-1 flex flex-col h-full">
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center min-h-[50vh]">
         <div className="w-full max-w-7xl h-full">
           <div className="relative h-full overflow-hidden shadow-xl">
             <Image
@@ -32,8 +32,8 @@ export default function ViewTab({
         </div>
       </div>
 
-      <div className="bg-secondary p-5">
-        <div className="max-w-6xl mx-auto flex justify-end">
+      <div className="bg-secondary p-5 min-h-[35vh] md:min-h-fit flex items-center">
+        <div className="max-w-6xl mx-auto flex justify-end w-full">
           <Button
             type="button"
             onClick={() => onNext?.()}
