@@ -17,12 +17,12 @@ export default function DesignerHeader() {
         <div className="flex items-center gap-4">
           <Link
             href="/"
-            aria-label="The Steel Home"
+            aria-label="Steel Building Depot Logo"
             className="flex items-center gap-3"
           >
             <Image
               src={theSteelLogo}
-              alt="The Steel Logo"
+              alt="Steel Building Depot Logo"
               className="h-10 w-auto"
             />
           </Link>

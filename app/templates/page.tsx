@@ -26,7 +26,7 @@ export default function Page() {
     <main className="min-h-screen bg-[#EDF1F4] py-9 pb-5">
       <Container>
         <h1 className="text-2xl  font-semibold text-center mb-5">
-          Welcome to The Steel Company Buildings 3D Designer
+          Welcome to Steel Building Depot 3D Designer
         </h1>
         <div className="bg-card/90 max-w-6xl mx-auto rounded-2xl p-4 shadow-md">
           <p className="text-center text-muted-foreground mb-4">
