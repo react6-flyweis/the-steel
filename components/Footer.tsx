@@ -70,7 +70,7 @@ export default async function Footer() {
         </div>
 
         {/* Center column: nav links */}
-        <nav className="flex flex-col justify-center items-start gap-4 md:gap-7 text-sm font-['Roboto'] font-medium w-full md:w-auto">
+        <nav className="flex flex-col justify-center items-start gap-4 md:gap-7 text-sm  font-medium w-full md:w-auto">
           <Link
             href="/building-types"
             className="hover:text-primary transition-colors"
