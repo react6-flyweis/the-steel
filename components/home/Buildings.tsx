@@ -96,7 +96,7 @@ export default function Buildings() {
           quotes.
         </p>
 
-        <Container className="mt-10 flex flex-wrap justify-center gap-6">
+        <Container className="mt-10 flex flex-wrap justify-center gap-3 sm:gap-6">
           {isLoading ? (
             Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
           ) : isError ? (
@@ -126,20 +126,22 @@ export default function Buildings() {
 
 function BuildingCard({ item }: { item: BuildingType }) {
   return (
-    <article className="flex items-center gap-4 p-3 rounded-xl bg-card/10 border border-white/5 w-[370px]">
-      <div className="flex items-center justify-center shrink-0 w-24 h-24 rounded overflow-hidden">
+    <article className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 p-2 sm:p-3 rounded-xl bg-card/10 border border-white/5 w-[calc(50%-0.375rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-[370px]">
+      <div className="flex items-center justify-center shrink-0 w-16 h-16 sm:w-24 sm:h-24 rounded overflow-hidden">
         <img
           src={item.image}
           alt={item.title}
-          className="object-contain h-full w-full max-w-24 max-h-24"
+          className="object-contain h-full w-full"
           width={96}
           height={96}
         />
       </div>
 
-      <div className="text-left">
-        <div className="font-semibold text-lg">{item.title}</div>
-        <div className="text-sm text-white/70 mt-1">{item.description}</div>
+      <div className="text-center sm:text-left w-full">
+        <div className="font-semibold text-sm sm:text-lg">{item.title}</div>
+        <div className="text-xs sm:text-sm text-white/70 mt-0.5 sm:mt-1 line-clamp-2">
+          {item.description}
+        </div>
       </div>
     </article>
   );
@@ -147,14 +149,14 @@ function BuildingCard({ item }: { item: BuildingType }) {
 
 function SkeletonCard() {
   return (
-    <article className="flex items-center gap-4 p-3 rounded-xl bg-card/10 border border-white/5 w-[370px] animate-pulse">
-      <div className="flex items-center justify-center shrink-0 w-24 h-24 bg-white/5 rounded">
-        <div className="w-16 h-16 bg-white/10 rounded" />
+    <article className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 p-2 sm:p-3 rounded-xl bg-card/10 border border-white/5 w-[calc(50%-0.375rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-[370px] animate-pulse">
+      <div className="flex items-center justify-center shrink-0 w-16 h-16 sm:w-24 sm:h-24 bg-white/5 rounded">
+        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/10 rounded" />
       </div>
 
-      <div className="text-left w-full">
-        <div className="h-5 bg-white/10 rounded w-3/5 mb-2" />
-        <div className="h-4 bg-white/6 rounded w-4/5" />
+      <div className="text-center sm:text-left w-full">
+        <div className="h-4 sm:h-5 bg-white/10 rounded w-3/5 mx-auto sm:mx-0 mb-1 sm:mb-2" />
+        <div className="h-3 sm:h-4 bg-white/6 rounded w-4/5 mx-auto sm:mx-0" />
       </div>
     </article>
   );
