@@ -34,7 +34,7 @@ export function NameStep({ form, onNext, onBack }: NameStepProps) {
                   <Input
                     {...field}
                     placeholder="First Name"
-                    className="w-full py-3 px-4 rounded-xl bg-gray-100 placeholder:text-muted-foreground border-none"
+                    className="w-full py-3 px-4 rounded h-12 bg-gray-100 placeholder:text-muted-foreground border-none"
                   />
                 </FormControl>
                 <FormMessage />
@@ -51,7 +51,7 @@ export function NameStep({ form, onNext, onBack }: NameStepProps) {
                   <Input
                     {...field}
                     placeholder="Last Name"
-                    className="w-full py-3 px-4 rounded-xl bg-gray-100 placeholder:text-muted-foreground border-none"
+                    className="w-full py-3 px-4 rounded h-12   bg-gray-100 placeholder:text-muted-foreground border-none"
                   />
                 </FormControl>
                 <FormMessage />
@@ -60,7 +60,7 @@ export function NameStep({ form, onNext, onBack }: NameStepProps) {
           />
         </div>
 
-        <div className="mt-6 flex items-center justify-center">
+        <div className="mt-40 flex items-center justify-center">
           <Button type="submit" size="lg" className="px-8 py-3 h-14 w-40">
             Continue
           </Button>

@@ -1,13 +1,28 @@
 import Image from "next/image";
+import { useEffect } from "react";
 import checkImg from "@/assets/check.png";
+import { Button } from "../ui/button";
 
 type Props = {
   status?: "idle" | "loading" | "success" | "error";
   message?: string;
+  isDialog?: boolean;
   onBack?: () => void;
 };
 
-export function ConfirmationStep({ status = "idle", message, onBack }: Props) {
+export function ConfirmationStep({
+  status = "idle",
+  message,
+  isDialog,
+  onBack,
+}: Props) {
+  useEffect(() => {
+    if (!isDialog && status === "success" && typeof onBack === "function") {
+      const t = setTimeout(() => onBack(), 2000);
+      return () => clearTimeout(t);
+    }
+    return;
+  }, [isDialog, status, onBack]);
   if (status === "loading") {
     return (
       <div className="py-8 text-center">
@@ -41,7 +56,6 @@ export function ConfirmationStep({ status = "idle", message, onBack }: Props) {
     );
   }
 
-  // success or idle -> show thank you confirmation
   return (
     <div className="mt-4 text-center">
       <div className="flex justify-center mb-4">
@@ -54,6 +68,14 @@ export function ConfirmationStep({ status = "idle", message, onBack }: Props) {
           ? message
           : "A Building Specialist is looking at which Clearance Buildings we have in stock that meet the wind, snow and seismic loads for your exact location. They will be in touch within 1 business day with your free quote."}
       </p>
+      {/* add a back button */}
+      {isDialog && (
+        <div className="mt-6 flex items-center justify-center">
+          <Button size="lg" onClick={onBack}>
+            Back to Home
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

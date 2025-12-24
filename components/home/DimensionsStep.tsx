@@ -36,8 +36,8 @@ export function DimensionsStep({
 }: DimensionsStepProps) {
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onNext)} className="space-y-4">
-        <h3 className="text-2xl font-bold mb-4 text-center">
+      <form onSubmit={form.handleSubmit(onNext)} className="w-full space-y-4">
+        <h3 className="text-2xl font-bold mb-1 text-center">
           Building Dimensions
         </h3>
 
@@ -49,18 +49,29 @@ export function DimensionsStep({
                 name="width"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Width</FormLabel>
+                    <FormLabel className="sr-only">Width</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger className="w-full bg-gray-100 border-none">
-                          <SelectValue placeholder="Select width" />
+                        <SelectTrigger className="w-full bg-gray-100 text-black border-none">
+                          <SelectValue
+                            placeholder="Width"
+                            className="text-black"
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="10">10&apos;</SelectItem>
-                        <SelectItem value="20">20&apos;</SelectItem>
-                        <SelectItem value="30">30&apos;</SelectItem>
-                        <SelectItem value="40">40&apos;</SelectItem>
+                        <SelectItem value="20">20 ft</SelectItem>
+                        <SelectItem value="30">30 ft</SelectItem>
+                        <SelectItem value="40">40 ft</SelectItem>
+                        <SelectItem value="50">50 ft</SelectItem>
+                        <SelectItem value="60">60 ft</SelectItem>
+                        <SelectItem value="80">80 ft</SelectItem>
+                        <SelectItem value="100">100 ft</SelectItem>
+                        <SelectItem value="120">120 ft</SelectItem>
+                        <SelectItem value="150">150 ft</SelectItem>
+                        <SelectItem value="200">200 ft</SelectItem>
+                        <SelectItem value="250">250 ft</SelectItem>
+                        <SelectItem value="300">300 ft</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -73,18 +84,21 @@ export function DimensionsStep({
                 name="length"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Length</FormLabel>
+                    <FormLabel className="sr-only">Length</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger className="w-full bg-gray-100 border-none">
-                          <SelectValue placeholder="Select length" />
+                        <SelectTrigger className="w-full bg-gray-100 text-black border-none">
+                          <SelectValue
+                            placeholder="Length"
+                            className="text-black"
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="20">20&apos;</SelectItem>
-                        <SelectItem value="40">40&apos;</SelectItem>
-                        <SelectItem value="60">60&apos;</SelectItem>
-                        <SelectItem value="80">80&apos;</SelectItem>
+                        <SelectItem value="20">20 ft</SelectItem>
+                        <SelectItem value="40">40 ft</SelectItem>
+                        <SelectItem value="60">60 ft</SelectItem>
+                        <SelectItem value="80">80 ft</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -114,18 +128,28 @@ export function DimensionsStep({
                 name="height"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Height</FormLabel>
+                    <FormLabel className="sr-only">Height</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger className="w-full bg-gray-100 border-none">
-                          <SelectValue placeholder="Select height" />
+                        <SelectTrigger className="w-full bg-gray-100 text-black border-none">
+                          <SelectValue
+                            placeholder="Height"
+                            className="text-black"
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="8">8&apos;</SelectItem>
-                        <SelectItem value="10">10&apos;</SelectItem>
-                        <SelectItem value="12">12&apos;</SelectItem>
-                        <SelectItem value="14">14&apos;</SelectItem>
+                        <SelectItem value="10">10 ft</SelectItem>
+                        <SelectItem value="12">12 ft</SelectItem>
+                        <SelectItem value="14">14 ft</SelectItem>
+                        <SelectItem value="16">16 ft</SelectItem>
+                        <SelectItem value="18">18 ft</SelectItem>
+                        <SelectItem value="20">20 ft</SelectItem>
+                        <SelectItem value="22">22 ft</SelectItem>
+                        <SelectItem value="24">24 ft</SelectItem>
+                        <SelectItem value="26">26 ft</SelectItem>
+                        <SelectItem value="28">28 ft</SelectItem>
+                        <SelectItem value="30">30 ft</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -138,18 +162,26 @@ export function DimensionsStep({
                 name="roofPitch"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Roof Pitch</FormLabel>
+                    <FormLabel className="sr-only">Roof Pitch</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger className="w-full bg-gray-100 border-none">
-                          <SelectValue placeholder="Select pitch" />
+                        <SelectTrigger className="w-full bg-gray-100 text-black border-none">
+                          <SelectValue
+                            placeholder="Roof Pitch"
+                            className="text-black"
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
+                        <SelectItem value="0.25:12">0.25:12</SelectItem>
+                        <SelectItem value="0.5:12">0.5:12</SelectItem>
+                        <SelectItem value="1:12">1:12</SelectItem>
                         <SelectItem value="2:12">2:12</SelectItem>
+                        <SelectItem value="3:12">3:12</SelectItem>
                         <SelectItem value="4:12">4:12</SelectItem>
+                        <SelectItem value="5:12">5:12</SelectItem>
                         <SelectItem value="6:12">6:12</SelectItem>
-                        <SelectItem value="8:12">8:12</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -160,34 +192,45 @@ export function DimensionsStep({
           </div>
         ) : (
           <>
-            <div className="flex justify-center mb-4">
-              <div className="w-44 h-28 relative">
+            <div className="w-full flex justify-center mb-4">
+              <div className="max-h-24 relative">
                 <Image
                   src={buildingDimensionsImg}
                   alt="Building Dimensions"
-                  className="object-contain"
+                  className="object-contain max-h-28"
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="w-full grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="width"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Width</FormLabel>
+                    <FormLabel className="sr-only">Width</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger className="w-full bg-gray-100 border-none">
-                          <SelectValue placeholder="Select width" />
+                        <SelectTrigger className="w-full bg-gray-100 text-black border-none">
+                          <SelectValue
+                            placeholder="Width"
+                            className="text-black"
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="10">10&apos;</SelectItem>
-                        <SelectItem value="20">20&apos;</SelectItem>
-                        <SelectItem value="30">30&apos;</SelectItem>
-                        <SelectItem value="40">40&apos;</SelectItem>
+                        <SelectItem value="20">20 ft</SelectItem>
+                        <SelectItem value="30">30 ft</SelectItem>
+                        <SelectItem value="40">40 ft</SelectItem>
+                        <SelectItem value="50">50 ft</SelectItem>
+                        <SelectItem value="60">60 ft</SelectItem>
+                        <SelectItem value="80">80 ft</SelectItem>
+                        <SelectItem value="100">100 ft</SelectItem>
+                        <SelectItem value="120">120 ft</SelectItem>
+                        <SelectItem value="150">150 ft</SelectItem>
+                        <SelectItem value="200">200 ft</SelectItem>
+                        <SelectItem value="250">250 ft</SelectItem>
+                        <SelectItem value="300">300 ft</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -200,18 +243,29 @@ export function DimensionsStep({
                 name="length"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Length</FormLabel>
+                    <FormLabel className="sr-only">Length</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger className="w-full bg-gray-100 border-none">
-                          <SelectValue placeholder="Select length" />
+                        <SelectTrigger className="w-full bg-gray-100 text-black border-none">
+                          <SelectValue
+                            placeholder="Length"
+                            className="text-black"
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="20">20&apos;</SelectItem>
-                        <SelectItem value="40">40&apos;</SelectItem>
-                        <SelectItem value="60">60&apos;</SelectItem>
-                        <SelectItem value="80">80&apos;</SelectItem>
+                        <SelectItem value="20">20 ft</SelectItem>
+                        <SelectItem value="30">30 ft</SelectItem>
+                        <SelectItem value="40">40 ft</SelectItem>
+                        <SelectItem value="50">50 ft</SelectItem>
+                        <SelectItem value="60">60 ft</SelectItem>
+                        <SelectItem value="80">80 ft</SelectItem>
+                        <SelectItem value="100">100 ft</SelectItem>
+                        <SelectItem value="120">120 ft</SelectItem>
+                        <SelectItem value="150">150 ft</SelectItem>
+                        <SelectItem value="200">200 ft</SelectItem>
+                        <SelectItem value="250">250 ft</SelectItem>
+                        <SelectItem value="300">300 ft</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -224,18 +278,28 @@ export function DimensionsStep({
                 name="height"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Height</FormLabel>
+                    <FormLabel className="sr-only">Height</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger className="w-full bg-gray-100 border-none">
-                          <SelectValue placeholder="Select height" />
+                        <SelectTrigger className="w-full bg-gray-100 text-black border-none">
+                          <SelectValue
+                            placeholder="Height"
+                            className="text-black"
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="8">8&apos;</SelectItem>
-                        <SelectItem value="10">10&apos;</SelectItem>
-                        <SelectItem value="12">12&apos;</SelectItem>
-                        <SelectItem value="14">14&apos;</SelectItem>
+                        <SelectItem value="10">10 ft</SelectItem>
+                        <SelectItem value="12">12 ft</SelectItem>
+                        <SelectItem value="14">14 ft</SelectItem>
+                        <SelectItem value="16">16 ft</SelectItem>
+                        <SelectItem value="18">18 ft</SelectItem>
+                        <SelectItem value="20">20 ft</SelectItem>
+                        <SelectItem value="22">22 ft</SelectItem>
+                        <SelectItem value="24">24 ft</SelectItem>
+                        <SelectItem value="26">26 ft</SelectItem>
+                        <SelectItem value="28">28 ft</SelectItem>
+                        <SelectItem value="30">30 ft</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -248,18 +312,26 @@ export function DimensionsStep({
                 name="roofPitch"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Roof Pitch</FormLabel>
+                    <FormLabel className="sr-only">Roof Pitch</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger className="w-full bg-gray-100 border-none">
-                          <SelectValue placeholder="Select pitch" />
+                        <SelectTrigger className="w-full border-none bg-gray-100 text-black">
+                          <SelectValue
+                            placeholder="Roof Pitch"
+                            className="text-black"
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
+                        <SelectItem value="0.25:12">0.25:12</SelectItem>
+                        <SelectItem value="0.5:12">0.5:12</SelectItem>
+                        <SelectItem value="1:12">1:12</SelectItem>
                         <SelectItem value="2:12">2:12</SelectItem>
+                        <SelectItem value="3:12">3:12</SelectItem>
                         <SelectItem value="4:12">4:12</SelectItem>
+                        <SelectItem value="5:12">5:12</SelectItem>
                         <SelectItem value="6:12">6:12</SelectItem>
-                        <SelectItem value="8:12">8:12</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />

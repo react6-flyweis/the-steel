@@ -42,7 +42,7 @@ export function ContactStep({
                     {...field}
                     type="email"
                     placeholder="Email Address"
-                    className="w-full py-3 px-4 rounded-xl bg-gray-100 placeholder:text-muted-foreground border-none"
+                    className="w-full py-3 px-4 rounded h-12 bg-gray-100 placeholder:text-muted-foreground border-none"
                   />
                 </FormControl>
                 <FormMessage />
@@ -60,7 +60,7 @@ export function ContactStep({
                     {...field}
                     type="tel"
                     placeholder="Phone Number"
-                    className="w-full py-3 px-4 rounded-xl bg-gray-100 placeholder:text-muted-foreground border-none"
+                    className="w-full py-3 px-4 rounded h-12 bg-gray-100 placeholder:text-muted-foreground border-none"
                   />
                 </FormControl>
                 <FormMessage />
@@ -69,7 +69,7 @@ export function ContactStep({
           />
         </div>
 
-        <div className="mt-6 flex items-center justify-center">
+        <div className="mt-20 flex items-center justify-center">
           <Button
             type="submit"
             size="lg"

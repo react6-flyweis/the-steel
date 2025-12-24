@@ -20,11 +20,11 @@ export function LocationStep({ form, onNext, onBack }: LocationStepProps) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onNext)} className="space-y-4">
-        <h3 className="text-2xl font-bold mb-2 text-center">
+        <h3 className="text-2xl font-bold mb-2 text-center max-w-sm mx-auto">
           Where will your new building be located?
         </h3>
 
-        <p className="text-center text-sm text-muted-foreground mb-6 px-4">
+        <p className="text-center text-muted-foreground mb-6 px-4 max-w-md mx-auto">
           Where will your new building be located? This is the location where
           the building will be erected. Please be accurate, as the location
           impacts the building codes and restrictions, which impacts the cost.
@@ -40,7 +40,7 @@ export function LocationStep({ form, onNext, onBack }: LocationStepProps) {
                   <Input
                     {...field}
                     placeholder="Zip or Postal Code"
-                    className="w-72 py-4 px-6 rounded-xl bg-gray-100 text-center placeholder:text-muted-foreground border-none"
+                    className="w-72 h-12 py-4 px-6 rounded bg-gray-100 text-center placeholder:text-muted-foreground border-none"
                   />
                 </div>
               </FormControl>
