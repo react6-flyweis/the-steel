@@ -215,14 +215,14 @@ export default function ContactUsDialog({
                     control={form.control}
                     name="firstName"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="gap-0">
                         <FormLabel className="text-sm text-slate-600">
                           First Name
                         </FormLabel>
                         <FormControl>
                           <Input
                             {...field}
-                            className="bg-transparent border-0 border-b border-slate-300 rounded-none px-0 py-2 text-sm placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:border-slate-800"
+                            className="bg-transparent border-0 border-b border-slate-300 rounded-none shadow-none px-0 py-2 text-sm placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:border-slate-800"
                           />
                         </FormControl>
                         <FormMessage />
@@ -234,14 +234,14 @@ export default function ContactUsDialog({
                     control={form.control}
                     name="lastName"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="gap-0">
                         <FormLabel className="text-sm text-slate-600">
                           Last Name
                         </FormLabel>
                         <FormControl>
                           <Input
                             {...field}
-                            className="bg-transparent border-0 border-b border-slate-300 rounded-none px-0 py-2 text-sm placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:border-slate-800"
+                            className="bg-transparent border-0 border-b border-slate-300 rounded-none px-0 py-2 text-sm shadow-none placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:border-slate-800"
                           />
                         </FormControl>
                         <FormMessage />
@@ -253,14 +253,14 @@ export default function ContactUsDialog({
                     control={form.control}
                     name="email"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="gap-0">
                         <FormLabel className="text-sm text-slate-600">
                           Email
                         </FormLabel>
                         <FormControl>
                           <Input
                             {...field}
-                            className="bg-transparent border-0 border-b border-slate-300 rounded-none px-0 py-2 text-sm placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:border-slate-800"
+                            className="bg-transparent border-0 border-b border-slate-300 rounded-none px-0 py-2 text-smplaceholder:text-muted-foreground focus-visible:ring-0 focus-visible:border-slate-800"
                           />
                         </FormControl>
                         <FormMessage />
@@ -272,14 +272,14 @@ export default function ContactUsDialog({
                     control={form.control}
                     name="phone"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="gap-0">
                         <FormLabel className="text-sm text-slate-600">
                           Phone Number
                         </FormLabel>
                         <FormControl>
                           <Input
                             {...field}
-                            className="bg-transparent border-0 border-b border-slate-300 rounded-none px-0 py-2 text-sm placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:border-slate-800"
+                            className="bg-transparent border-0 border-b border-slate-300 rounded-none text-sm px-0 shadow-none placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:border-slate-800"
                           />
                         </FormControl>
                         <FormMessage />
@@ -291,7 +291,7 @@ export default function ContactUsDialog({
                     control={form.control}
                     name="message"
                     render={({ field }) => (
-                      <FormItem className="col-span-2">
+                      <FormItem className="col-span-2 gap-0">
                         <FormLabel className="text-sm text-slate-600">
                           Message
                         </FormLabel>
