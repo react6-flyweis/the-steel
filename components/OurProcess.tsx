@@ -32,18 +32,27 @@ export default function OurProcess() {
   const svgHeight = steps.length * 180 + 120;
 
   return (
-    <section className="relative py-20 bg-gray-100 overflow-hidden">
+    <section className="relative py-16 bg-gray-100 overflow-hidden">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover opacity-"
-        style={{ backgroundImage: `url(${ourProcessImage.src})` }}
+        className="absolute inset-0 w-full h-full overflow-hidden"
         aria-hidden
-      />
+      >
+        <div
+          className="w-full  h-[100vw] bg-cover bg-center opacity-40"
+          style={{
+            backgroundImage: `url(${ourProcessImage.src})`,
+            backgroundPositionX: "75%",
+            transform: "rotate(90deg)",
+            transformOrigin: "center",
+          }}
+        />
+      </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-blue-600">Our Process</h2>
-          <p className="mt-3 text-xl text-gray-800 font-semibold">
+          <p className="mt-5 text-xl text-gray-800 font-bold font-inter">
             From Idea to Installation—Made Simple
           </p>
         </div>
@@ -76,8 +85,8 @@ export default function OurProcess() {
                   stroke="#9ca3af"
                   strokeWidth="5"
                   fill="none"
-                  strokeLinecap="square"
-                  strokeLinejoin="miter"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   vectorEffect="non-scaling-stroke"
                 />
               );
