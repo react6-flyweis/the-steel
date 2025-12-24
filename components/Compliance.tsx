@@ -29,14 +29,14 @@ export default function Compliance() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
             Commitment to Quality & Compliance
           </h2>
-          <p className="text-gray-300 text-lg md:text-xl max-w-4xl mx-auto">
+          <p className="text-gray-300 text-lg md:text-xl max-w-6xl px-6 mx-auto">
             We adhere to strict quality standards and engineering practices to
             ensure every building we deliver meets or exceeds industry
             expectations.
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-6 md:gap-8 max-w-4xl mx-auto">
+        <div className="flex flex-col items-center gap-6 md:gap-8 max-w-6xl px-6 mx-auto">
           {/* Row 1 - Left aligned */}
           <div className="w-full flex justify-start">
             <div className="bg-gradient-to-r from-white/40 to-transparent backdrop-blur-sm px-8 py-4 md:px-10 md:py-5 rounded hover:from-white/60 transition-colors">
