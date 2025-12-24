@@ -35,8 +35,10 @@ import getErrorMessage from "@/lib/getErrorMessage";
 
 export default function BuildingForm({
   isDialog = false,
+  onClose,
 }: {
   isDialog?: boolean;
+  onClose?: () => void;
 }) {
   const [step, setStep] = useState<number>(1);
   const [formData, setFormData] = useState<Partial<FullBuildingFormData>>({});
@@ -272,11 +274,19 @@ export default function BuildingForm({
         {step === 6 && (
           <div className="w-full max-w-xl mx-auto text-center">
             <ConfirmationStep
+              isDialog={isDialog}
               status={submissionStatus}
-              message={serverMessage}
+              message="A Building Specialist is looking at which Clearance Buildings we have in stock that meet the wind, snow and seismic loads for your exact location. They will be in touch within 1 business day with your free quote."
+              // message={serverMessage}
               onBack={() => {
                 setSubmissionStatus("idle");
-                setStep(5);
+                // close the dilaog if in dialog mode, else go back to step 1
+                if (isDialog) {
+                  // assuming there's a prop or context to close the dialog
+                  onClose?.();
+                } else {
+                  setStep(1);
+                }
               }}
             />
           </div>
