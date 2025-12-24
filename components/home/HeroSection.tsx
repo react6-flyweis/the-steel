@@ -34,7 +34,7 @@ export default function HeroSection() {
         </p>
 
         <div className="mt-6 flex items-center justify-center gap-4 pb-5">
-          <Link href="/templates">
+          <Link href="/designer-soon">
             <Button
               className="rounded border-primary text-primary min-w-32"
               size="lg"
