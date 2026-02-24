@@ -1,33 +1,44 @@
 import Image from "next/image";
 import heroHouse from "@/assets/home/hero-house-img.png";
-import cloud from "@/assets/home/cloud.png";
 import { Button } from "../ui/button";
 import { BoxIcon, HandCoinsIcon } from "lucide-react";
 import Container from "../Container";
 import Link from "next/link";
 import GetAQuoteDialog from "../GetAQuoteDialog";
+// import cloud from "@/assets/home/cloud.png";
 
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden md:min-h-[calc(100vh-80px)] flex flex-col">
-      {/* Cloud background (full-height behind everything) */}
+      {/* Video background (full-height behind everything) */}
       <div className="absolute inset-0 pointer-events-none -z-10">
-        <Image
+        {/* <Image
           src={cloud}
           alt="clouds"
           fill
           className="w-full h-full object-cover opacity-30"
+        /> */}
+        <video
+          poster="/video-poster.webp"
+          src="/steel-building-depot-video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
         />
+        {/* layer */}
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       <Container className="pt-10 text-center relative z-10">
-        <h1 className="text-3xl  font-bold leading-tight text-secondary">
+        <h1 className="text-3xl  font-bold leading-tight text-white">
           Engineered Steel Buildings Built for
           <br />
           <span className="text-primary"> Strength, Style & Longevity.</span>
         </h1>
 
-        <p className="mt-2 max-w-2xl mx-auto">
+        <p className="mt-2 max-w-2xl mx-auto text-white">
           From small garages to large warehouses—custom-engineered kits
           delivered to your site, designed to local codes for wind, snow, and
           seismic safety.
