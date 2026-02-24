@@ -13,7 +13,7 @@ export default async function Footer() {
 
   const address = cd?.address ?? "";
   const phone = cd?.phone ?? cd?.customerCarePhone ?? "";
-  const email = cd?.email ?? "hello@thesteel.com";
+  const email = cd?.email ?? "info@steelbuildingdepot.com";
   const fb = cd?.fb ?? cd?.fb ?? null;
   const linkedin = cd?.linkedIn ?? null;
   const twitter = cd?.twitter ?? null;
