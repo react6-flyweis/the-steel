@@ -32,13 +32,13 @@ export default function HeroSection() {
       </div>
 
       {/* take up remaining space */}
-      <Container className="flex flex-col flex-1 justify-end relative z-10 pb-10">
-        <h1 className="text-4xl max-w-lg font-bold leading-tight text-white">
+      <Container className="flex min-h-112 flex-col flex-1 justify-end relative z-10 pb-10">
+        <h1 className="text-3xl md:text-4xl max-w-lg font-bold leading-tight text-white">
           Engineered Steel Buildings Built for
           <span className="text-primary"> Strength, Style & Longevity.</span>
         </h1>
 
-        <p className="mt-2  text-white max-w-lg">
+        <p className="mt-2 text-sm md:text-base text-white max-w-lg">
           From small garages to large warehouses—custom-engineered kits
           delivered to your site, designed to local codes for wind, snow, and
           seismic safety.
