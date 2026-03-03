@@ -1,5 +1,5 @@
-import Image from "next/image";
-import heroHouse from "@/assets/home/hero-house-img.png";
+// import Image from "next/image";
+// import heroHouse from "@/assets/home/hero-house-img.png";
 import { Button } from "../ui/button";
 import { BoxIcon, HandCoinsIcon } from "lucide-react";
 import Container from "../Container";
@@ -28,23 +28,23 @@ export default function HeroSection() {
           className="w-full h-full object-cover"
         />
         {/* layer */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-linear-to-r from-black to-transparent" />
       </div>
 
-      <Container className="pt-10 text-center relative z-10">
-        <h1 className="text-3xl  font-bold leading-tight text-white">
+      {/* take up remaining space */}
+      <Container className="flex flex-col flex-1 justify-end relative z-10 pb-10">
+        <h1 className="text-4xl max-w-lg font-bold leading-tight text-white">
           Engineered Steel Buildings Built for
-          <br />
           <span className="text-primary"> Strength, Style & Longevity.</span>
         </h1>
 
-        <p className="mt-2 max-w-2xl mx-auto text-white">
+        <p className="mt-2  text-white max-w-lg">
           From small garages to large warehouses—custom-engineered kits
           delivered to your site, designed to local codes for wind, snow, and
           seismic safety.
         </p>
 
-        <div className="mt-6 flex items-center justify-center gap-4 pb-5">
+        <div className="mt-6 flex gap-5">
           <Link href="/designer-soon">
             <Button
               className="rounded border-primary text-primary min-w-32"
@@ -64,22 +64,8 @@ export default function HeroSection() {
         </div>
       </Container>
 
-      {/* House image overlapping lower section — flow on mobile, absolute on md+ */}
-      <div className="relative md:absolute md:bottom-22 w-full flex justify-center pointer-events-none z-10 mt-6 md:mt-0">
-        <div
-          className="relative w-[85%] sm:w-[70%] md:w-[60%] lg:w-[45%] z-10"
-          style={{ transform: "scaleX(-1)" }}
-        >
-          <Image
-            src={heroHouse}
-            alt="steel building"
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </div>
-
       {/* Stats band */}
-      <div className=" pt-15 pb-4 bg-secondary text-white mt-auto order-last">
+      <div className="py-6 bg-secondary text-white mt-auto order-last">
         <Container className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="flex flex-col  gap-4 justify-center md:justify-start">
             <div className="text-2xl">⭐️⭐️⭐️⭐️⭐️</div>
